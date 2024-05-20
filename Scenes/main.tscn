@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_sb1oc"]
 [ext_resource type="PackedScene" uid="uid://bjulqsojtshps" path="res://Scenes/objects/ground.tscn" id="2_4icbo"]
 [ext_resource type="PackedScene" uid="uid://bcd13dttv285b" path="res://Scenes/character.tscn" id="2_ry2vv"]
-[ext_resource type="Texture2D" uid="uid://bwlywr0g84oe6" path="res://Final Assets/shadows.png" id="3_4arij"]
+[ext_resource type="Texture2D" uid="uid://bli10y5ka33kq" path="res://Final Assets/shadows.png" id="3_4arij"]
 [ext_resource type="PackedScene" uid="uid://bodt8vmmr20ta" path="res://Scenes/objects/foliage.tscn" id="4_wld22"]
 [ext_resource type="PackedScene" uid="uid://dkiintp78mnb1" path="res://Scenes/objects/conveyor.tscn" id="5_2akyw"]
 [ext_resource type="Script" path="res://Scenes/Bins+Items.gd" id="5_hwix6"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b02pkwyxty4yj" path="res://Scenes/objects/conveyor_right.tscn" id="9_sd75t"]
 [ext_resource type="PackedScene" uid="uid://b26dr3y2fcg47" path="res://Scenes/objects/green_bin.tscn" id="9_t4mds"]
 [ext_resource type="PackedScene" uid="uid://wmybedbgr2y6" path="res://Scenes/objects/big_bin_right.tscn" id="10_gxw7w"]
-[ext_resource type="Texture2D" uid="uid://cj3mnhf8jyn2i" path="res://Final Assets/quit_button_unpressed.png" id="14_tn6n8"]
+[ext_resource type="Texture2D" uid="uid://cu6y041s6nvtc" path="res://Final Assets/quit_button_unpressed.png" id="14_tn6n8"]
 [ext_resource type="Script" path="res://Scenes/QuitButtonUnpressed.gd" id="15_uxjcp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpsen"]

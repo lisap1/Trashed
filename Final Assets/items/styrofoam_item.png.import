@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tfgwm075kpwa"
-path="res://.godot/imported/title.png-dd15e0df41e0b92acf9e9399ab0c8153.ctex"
+uid="uid://bbvd1ioy5acnf"
+path="res://.godot/imported/styrofoam_item.png-f5ce5017126ad56466268a740008d987.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Final Assets/title.png"
-dest_files=["res://.godot/imported/title.png-dd15e0df41e0b92acf9e9399ab0c8153.ctex"]
+source_file="res://Final Assets/items/styrofoam_item.png"
+dest_files=["res://.godot/imported/styrofoam_item.png-f5ce5017126ad56466268a740008d987.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tfgwm075kpwa"
-path="res://.godot/imported/title.png-dd15e0df41e0b92acf9e9399ab0c8153.ctex"
+uid="uid://b6qp5sa2t4jil"
+path="res://.godot/imported/glass_bottle_item.png-4e401bdd778653258cda39981ed85203.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Final Assets/title.png"
-dest_files=["res://.godot/imported/title.png-dd15e0df41e0b92acf9e9399ab0c8153.ctex"]
+source_file="res://Final Assets/items/glass_bottle_item.png"
+dest_files=["res://.godot/imported/glass_bottle_item.png-4e401bdd778653258cda39981ed85203.ctex"]
 
 [params]
 
