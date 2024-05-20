@@ -1,0 +1,92 @@
+[gd_scene load_steps=17 format=3 uid="uid://cplqn645tjfya"]
+
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_sb1oc"]
+[ext_resource type="PackedScene" uid="uid://bjulqsojtshps" path="res://Scenes/objects/ground.tscn" id="2_4icbo"]
+[ext_resource type="PackedScene" uid="uid://bcd13dttv285b" path="res://Scenes/character.tscn" id="2_ry2vv"]
+[ext_resource type="Texture2D" uid="uid://bwlywr0g84oe6" path="res://Final Assets/shadows.png" id="3_4arij"]
+[ext_resource type="PackedScene" uid="uid://bodt8vmmr20ta" path="res://Scenes/objects/foliage.tscn" id="4_wld22"]
+[ext_resource type="PackedScene" uid="uid://dkiintp78mnb1" path="res://Scenes/objects/conveyor.tscn" id="5_2akyw"]
+[ext_resource type="Script" path="res://Scenes/Bins+Items.gd" id="5_hwix6"]
+[ext_resource type="PackedScene" uid="uid://dls75v3ku2u3k" path="res://Scenes/objects/big_bin.tscn" id="6_h5ydq"]
+[ext_resource type="PackedScene" uid="uid://03v4i72cvh4k" path="res://Scenes/objects/blue_bin.tscn" id="7_yb7m1"]
+[ext_resource type="PackedScene" uid="uid://dqce2jekrfp0y" path="res://Scenes/objects/red_bin.tscn" id="8_0fkh7"]
+[ext_resource type="PackedScene" uid="uid://b02pkwyxty4yj" path="res://Scenes/objects/conveyor_right.tscn" id="9_sd75t"]
+[ext_resource type="PackedScene" uid="uid://b26dr3y2fcg47" path="res://Scenes/objects/green_bin.tscn" id="9_t4mds"]
+[ext_resource type="PackedScene" uid="uid://wmybedbgr2y6" path="res://Scenes/objects/big_bin_right.tscn" id="10_gxw7w"]
+[ext_resource type="Texture2D" uid="uid://cj3mnhf8jyn2i" path="res://Final Assets/quit_button_unpressed.png" id="14_tn6n8"]
+[ext_resource type="Script" path="res://Scenes/QuitButtonUnpressed.gd" id="15_uxjcp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpsen"]
+size = Vector2(159, 34)
+
+[node name="World" type="Node2D"]
+position = Vector2(-4, -5)
+script = ExtResource("1_sb1oc")
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Ground" parent="Objects" instance=ExtResource("2_4icbo")]
+
+[node name="Shadows" type="Sprite2D" parent="Objects"]
+position = Vector2(253.5, 141.5)
+texture = ExtResource("3_4arij")
+
+[node name="Foliage" parent="Objects" instance=ExtResource("4_wld22")]
+position = Vector2(-1, -3)
+
+[node name="Bins+Items" type="Node2D" parent="."]
+script = ExtResource("5_hwix6")
+
+[node name="RedBin" parent="Bins+Items" instance=ExtResource("8_0fkh7")]
+position = Vector2(196, 97)
+
+[node name="BlueBin" parent="Bins+Items" instance=ExtResource("7_yb7m1")]
+position = Vector2(253, 95)
+
+[node name="GreenBin" parent="Bins+Items" instance=ExtResource("9_t4mds")]
+unique_name_in_owner = true
+position = Vector2(308, 96)
+
+[node name="Conveyor" parent="." instance=ExtResource("5_2akyw")]
+position = Vector2(129, 246)
+
+[node name="ConveyorLeftArea" type="Area2D" parent="Conveyor"]
+position = Vector2(65, -96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Conveyor/ConveyorLeftArea"]
+position = Vector2(-46.5, 71)
+shape = SubResource("RectangleShape2D_kpsen")
+
+[node name="BigBin" parent="Conveyor" instance=ExtResource("6_h5ydq")]
+position = Vector2(-126, -65)
+
+[node name="ConveyorRight" parent="." instance=ExtResource("9_sd75t")]
+position = Vector2(380, 246)
+
+[node name="ConveyorRightArea" type="Area2D" parent="ConveyorRight"]
+position = Vector2(65, -96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorRight/ConveyorRightArea"]
+position = Vector2(-83, 70)
+shape = SubResource("RectangleShape2D_kpsen")
+
+[node name="BigBinRight" parent="ConveyorRight" instance=ExtResource("10_gxw7w")]
+position = Vector2(26, -66)
+
+[node name="Player" parent="." instance=ExtResource("2_ry2vv")]
+position = Vector2(256, 121)
+
+[node name="Test" type="Sprite2D" parent="."]
+position = Vector2(249, 144)
+texture = ExtResource("14_tn6n8")
+script = ExtResource("15_uxjcp")
+
+[node name="Timer" type="Timer" parent="Test"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="body_entered" from="Conveyor/ConveyorLeftArea" to="." method="_on_conveyor_left_area_body_entered"]
+[connection signal="body_exited" from="Conveyor/ConveyorLeftArea" to="." method="_on_conveyor_left_area_body_exited"]
+[connection signal="body_entered" from="ConveyorRight/ConveyorRightArea" to="." method="_on_conveyor_right_area_body_entered"]
+[connection signal="body_exited" from="ConveyorRight/ConveyorRightArea" to="." method="_on_conveyor_right_area_body_exited"]
+[connection signal="timeout" from="Test/Timer" to="Test" method="_on_timer_timeout"]

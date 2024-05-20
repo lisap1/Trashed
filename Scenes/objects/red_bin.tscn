@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqce2jekrfp0y"]
+
+[ext_resource type="Texture2D" uid="uid://b2a0tu5aa4fik" path="res://Final Assets/red_bin.png" id="1_x3vwp"]
+
+[node name="RedBin" type="StaticBody2D"]
+
+[node name="RedBin" type="Sprite2D" parent="."]
+texture = ExtResource("1_x3vwp")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-12, 28, -13, 15, 14, 15, 12, 28)

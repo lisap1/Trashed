@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dls75v3ku2u3k"]
+
+[ext_resource type="Texture2D" uid="uid://pjms04w05r3k" path="res://Final Assets/big_bin.png" id="1_40wiw"]
+[ext_resource type="Texture2D" uid="uid://dlwqb36naqk75" path="res://Final Assets/trash_pile.png" id="2_vxo76"]
+
+[node name="BigBin" type="StaticBody2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 36, -1, 85, 77, 85, 87, 65, 97, 32, 1, 36)
+
+[node name="BigBinLeft" type="Sprite2D" parent="."]
+position = Vector2(49.5, 43)
+texture = ExtResource("1_40wiw")
+
+[node name="TrashPileLeft" type="Sprite2D" parent="."]
+position = Vector2(25.5, 27)
+texture = ExtResource("2_vxo76")

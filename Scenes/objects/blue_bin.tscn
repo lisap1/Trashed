@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://03v4i72cvh4k"]
+
+[ext_resource type="Texture2D" uid="uid://bvn4p88oi2eey" path="res://Final Assets/blue_bin.png" id="1_3p45b"]
+
+[node name="BlueBin" type="StaticBody2D"]
+
+[node name="BinSprite" type="Sprite2D" parent="."]
+position = Vector2(-0.5, -7)
+texture = ExtResource("1_3p45b")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-253, -92.5)
+polygon = PackedVector2Array(233, 106, 234, 124, 271, 124, 273, 107, 233, 106)

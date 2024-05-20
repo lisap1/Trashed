@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://3kv6x18mxi0p"]
+
+[ext_resource type="Script" path="res://StartScreen.gd" id="1_2mbc2"]
+[ext_resource type="Texture2D" uid="uid://uv80m5544b7s" path="res://Final Assets/play_button_unpressed.png" id="2_raqgp"]
+[ext_resource type="Texture2D" uid="uid://dklflunpnnajt" path="res://Final Assets/play_button_pressed.png" id="3_3pouq"]
+[ext_resource type="Texture2D" uid="uid://cj3mnhf8jyn2i" path="res://Final Assets/quit_button_unpressed.png" id="4_v1b2d"]
+[ext_resource type="Texture2D" uid="uid://buko7fwrsw402" path="res://Final Assets/sky_start_screen_parallax.png" id="5_2py4f"]
+[ext_resource type="Texture2D" uid="uid://5it6v34r1y6o" path="res://Final Assets/quit_button_pressed.png" id="5_btrao"]
+[ext_resource type="Texture2D" uid="uid://b1lrbap0se3yx" path="res://Final Assets/tree_start_screen_parallax.png" id="6_duw1r"]
+[ext_resource type="Texture2D" uid="uid://fpsyfrwcau47" path="res://Final Assets/title.png" id="8_t02wx"]
+
+[node name="StartScreen" type="Node2D"]
+script = ExtResource("1_2mbc2")
+
+[node name="Play" type="TextureButton" parent="."]
+offset_left = 172.0
+offset_top = 131.0
+offset_right = 322.0
+offset_bottom = 169.0
+texture_normal = ExtResource("2_raqgp")
+texture_pressed = ExtResource("3_3pouq")
+
+[node name="Quit" type="TextureButton" parent="."]
+offset_left = 172.0
+offset_top = 192.0
+offset_right = 322.0
+offset_bottom = 271.0
+texture_normal = ExtResource("4_v1b2d")
+texture_pressed = ExtResource("5_btrao")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(500, 0)
+
+[node name="SkyStartScreenParallax" type="Sprite2D" parent="ParallaxBackground/Sky"]
+position = Vector2(251, 140)
+texture = ExtResource("5_2py4f")
+metadata/_edit_lock_ = true
+
+[node name="Trees" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(500, 0)
+
+[node name="TreeStartScreenParallax" type="Sprite2D" parent="ParallaxBackground/Trees"]
+position = Vector2(251, 141)
+texture = ExtResource("6_duw1r")
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(249, 45)
+texture = ExtResource("8_t02wx")
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
