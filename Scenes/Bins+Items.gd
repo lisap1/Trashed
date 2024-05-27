@@ -1,40 +1,44 @@
 extends Node2D
-#@onready var red = $RedBin
-#@onready var blue = $BlueBin
-#@onready var green = %GreenBin
-#var green = {
-		#"name" : %GreenBin.get_node,
-		#"apple" : "hello",
-	#}
-#
-# Called when the node enters the scene tree for the first time.
-#func _ready():
-	#print(green["name"])
-	#var item_correct_bin = [
-	#{"name" : "apple", "bin": %GreenBin},
-	#{"name" : "cheese", "bin": %GreenBin},
-	#{"name" : "fish", "bin": %GreenBin},
-	#{"name" : "chicken", "bin": %GreenBin},
-	#{"name" : "bread", "bin": %GreenBin},
-	#{"name" : "plastic bottle", "bin": "blue"},
-	#{"name" : "cardboard", "bin": "blue"},
-	#{"name" : "paper", "bin": "blue"},
-	#{"name" : "can", "bin": "blue"},
-	#{"name" : "glass", "bin": "blue"},
-	#{"name" : "broken glass", "bin": "red"},
-	#{"name" : "poo bag", "bin": "red"},
-	#{"name" : "tissue", "bin": "red"},
-	#{"name" : "styrofoam", "bin": "red"},
-	#{"name" : "plastic bag", "bin": "red"},
-#]
-	#for i in item_correct_bin:
-		#print(i["name"], i["bin"])
-		##print(get_node("%GreenBin"))
-		#print(get_node(i["bin"]))
+var item_scene_resource = preload("res://Scenes/item.tscn")
+var right_con_list = []
+var left_con_list = []
+var selected_conveyor = ''
+var speed = 10
+#signal RightSpeed
 
+
+func _ready():
+	pass
+
+func _on_item_spawn_timer_timeout():
+	#choose conveyor for item to spawn
+	var conveyors = [$"../SpawnPosRight", $"../SpawnPosLeft"]
+	if right_con_list.size() > left_con_list.size():
+		selected_conveyor = $"../SpawnPosLeft"
+	elif right_con_list.size() < left_con_list.size():
+		selected_conveyor = $"../SpawnPosRight"
+	else:
+		selected_conveyor = conveyors[randi() % 2]
+	print(selected_conveyor)
 	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	# speed and direction of the object
+	if selected_conveyor == $"../SpawnPosRight":
+		#emit_signal("RightSpeed")
+		right_con_list.append("item")
+	else:
+		left_con_list.append("item")
+		
+	print(right_con_list, left_con_list)
+		
+	# spawn an item in the world
+	var item_scene = item_scene_resource.instantiate()
+	print(item_scene.position, selected_conveyor.position)
+	var pos = selected_conveyor.position
+	print(pos)
+	item_scene.position = pos
+	$"../Items".add_child(item_scene)
+	
 func _process(_delta):
 	pass
+	
+

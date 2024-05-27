@@ -1,12 +1,10 @@
 extends Node2D
-const front_order = -1
+const front_order = -2
 var exited = false
-var item_scene_resource = preload("res://Scenes/item.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var item_scene = item_scene_resource.instantiate()
-	add_child(item_scene)
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -29,6 +27,4 @@ func _on_conveyor_left_area_body_exited(_body):
 
 func _on_conveyor_right_area_body_exited(_body):
 	exited = true
-	
-	
 	
