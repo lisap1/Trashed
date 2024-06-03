@@ -1,20 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dflyn1vc72a4b"]
+[gd_scene load_steps=2 format=3 uid="uid://dflyn1vc72a4b"]
 
-[ext_resource type="Script" path="res://Scenes/Item.gd" id="1_8d3mj"]
+[ext_resource type="Script" path="res://Scenes/item_v3.gd" id="1_je3p8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v00e1"]
-size = Vector2(20, 37)
-
-[node name="Item" type="Node2D"]
-position = Vector2(119, 85)
-script = ExtResource("1_8d3mj")
-
-[node name="ItemSprite" type="Sprite2D" parent="."]
-
-[node name="DetectionArea" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(0, -8.5)
-shape = SubResource("RectangleShape2D_v00e1")
+[node name="Sprite2D" type="Sprite2D"]
+script = ExtResource("1_je3p8")

@@ -41,6 +41,7 @@ var item_bin_dict = {
 var all_items = [apple, bread, cheese, chicken, fish, can, glass_bottle, paper, cardboard, 
 plastic_bottle, plastic_bag, doggy_bag, styrofoam, tissues, broken_glass]
 
+
 func _ready():
 	#print(speed)
 	set_process_input(true)
@@ -55,7 +56,9 @@ func _ready():
 	# checking that the item variables can be found in the dictionary
 	if item_bin_dict[random_tex] == "green":
 		print('yippee')
+	
 	speed_pos.emit()
+	
 
 func _process(delta):
 	# movement

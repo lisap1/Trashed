@@ -32,22 +32,22 @@ texture = ExtResource("3_4arij")
 [node name="Foliage" parent="Objects" instance=ExtResource("4_wld22")]
 position = Vector2(-1, -3)
 
-[node name="Bins+Items" type="Node2D" parent="." groups=["Bins + Items"]]
+[node name="BinsItems" type="Node2D" parent="."]
 script = ExtResource("5_hwix6")
 
-[node name="ItemSpawnTimer" type="Timer" parent="Bins+Items"]
+[node name="ItemSpawnTimer" type="Timer" parent="BinsItems"]
 wait_time = 3.0
 autostart = true
 
-[node name="RedBin" parent="Bins+Items" instance=ExtResource("8_0fkh7")]
+[node name="RedBin" parent="BinsItems" instance=ExtResource("8_0fkh7")]
 position = Vector2(196, 97)
 collision_layer = 2
 
-[node name="BlueBin" parent="Bins+Items" instance=ExtResource("7_yb7m1")]
+[node name="BlueBin" parent="BinsItems" instance=ExtResource("7_yb7m1")]
 position = Vector2(253, 95)
 collision_layer = 2
 
-[node name="GreenBin" parent="Bins+Items" instance=ExtResource("9_t4mds")]
+[node name="GreenBin" parent="BinsItems" instance=ExtResource("9_t4mds")]
 position = Vector2(305, 100)
 collision_layer = 2
 
@@ -92,7 +92,7 @@ position = Vector2(256, 121)
 
 [node name="Items" type="Node2D" parent="."]
 
-[connection signal="timeout" from="Bins+Items/ItemSpawnTimer" to="Bins+Items" method="_on_item_spawn_timer_timeout"]
+[connection signal="timeout" from="BinsItems/ItemSpawnTimer" to="BinsItems" method="_on_item_spawn_timer_timeout"]
 [connection signal="body_entered" from="Conveyor/ConveyorLeftArea" to="." method="_on_conveyor_left_area_body_entered"]
 [connection signal="body_exited" from="Conveyor/ConveyorLeftArea" to="." method="_on_conveyor_left_area_body_exited"]
 [connection signal="body_entered" from="ConveyorRight/ConveyorRightArea" to="." method="_on_conveyor_right_area_body_entered"]
