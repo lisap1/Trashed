@@ -1,14 +1,12 @@
 extends Node2D
-# call class
-# this needs to be in timer function but process function needs access to direction
-var test_spawn = test_class.new()
-var speed: int = 50
+
+var speed: int = 20
 # item textures, associated bins, list of all items
 var apple = "res://Final Assets/items/apple_item.png"
 var bread = "res://Final Assets/items/bread_item.png"
 var item_bin_dict = {
 	apple : "green",
-	bread : "green"
+	bread : "green",
 	}
 var all_items = [apple, bread]
 const NUM_ITEMS = 2
@@ -33,28 +31,45 @@ func choose_conveyor(right_conveyor, left_conveyor, left_list, right_list):
 		
 func _on_item_spawn_timer_timeout():
 	# choose random item
-	var rand_item = test_spawn.random_item(all_items, NUM_ITEMS, item_bin_dict)
+	var item_spawn = item_class.new()	
+	var rand_item = item_spawn.random_item(all_items, NUM_ITEMS, item_bin_dict)
 	#change sprite texture
-	test_spawn.texture = load(rand_item[0])
+	item_spawn.texture = load(rand_item[0])
+	#create area 2d
+	var item_area = Area2D.new()
+	var item_collision = CollisionShape2D.new()
+	var collision_shape = RectangleShape2D.new()
+	collision_shape.extents = Vector2(10, 30)
+	item_collision.shape = collision_shape
+	# setting collision layers and masks
+	item_area.set_collision_layer_value(3, true)
+	item_area.set_collision_layer_value(1, false)
+	item_area.set_collision_mask_value(1, true)
 	# choose spawn point
+	# maybe the conveyor spawn should just be random? as the player still has to keep up the pace
 	var chosen_spawn_point = choose_conveyor($"../SpawnPosRight", 
 	$"../SpawnPosLeft", left_con_list, right_con_list)
 	if chosen_spawn_point == $"../SpawnPosRight":
 		right_con_list.append("item")
-		test_spawn.direction = -1
+		item_spawn.direction = -1
 	elif chosen_spawn_point == $"../SpawnPosLeft":
 		left_con_list.append("item")
-		test_spawn.direction = 1
-	test_spawn.position = chosen_spawn_point.position
-
-	$"../Items".add_child(test_spawn)
-	
+		item_spawn.direction = 1
+	# setting item position at selected conveyor
+	item_spawn.position = chosen_spawn_point.position
+	# adding item to main scene
+	$"../Items".add_child(item_spawn)
+	# adding area2d as children of item
+	item_spawn.add_child(item_area)
+	item_area.add_child(item_collision)
+	# when player enters item area: 
+	item_area.body_entered.connect(func(body): item_spawn.queue_free())
 	
 func _process(delta):
 	# movement for items
 	if $"../Items" != null and $"../Items".get_children().size() > 0:
 		var all_children = $"../Items".get_children()
 		for child in all_children:
-			if child is test_class:
-				child.position.x += speed * delta * test_spawn.direction
-		
+			if child is item_class:
+				child.position.x += speed * delta * child.direction
+				

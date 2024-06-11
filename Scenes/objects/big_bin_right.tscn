@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://wmybedbgr2y6"]
 
-[ext_resource type="Texture2D" uid="uid://pjms04w05r3k" path="res://Final Assets/big_bin.png" id="1_ymj3d"]
-[ext_resource type="Texture2D" uid="uid://dlwqb36naqk75" path="res://Final Assets/trash_pile.png" id="2_ipehw"]
+[ext_resource type="Texture2D" uid="uid://c72t7i2vd5nn2" path="res://Final Assets/big_bin.png" id="1_ymj3d"]
+[ext_resource type="Texture2D" uid="uid://cmfo80pvgbaij" path="res://Final Assets/trash_pile.png" id="2_ipehw"]
 
 [node name="BigBinRight" type="StaticBody2D"]
+collision_layer = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, 36, 23, 85, 99, 85, 99, 57, 98, 36, 1, 36)

@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://Scenes/item_v3.gd" id="1_je3p8"]
 
-[node name="Sprite2D" type="Sprite2D"]
+[node name="ItemSprite" type="Sprite2D"]
 script = ExtResource("1_je3p8")

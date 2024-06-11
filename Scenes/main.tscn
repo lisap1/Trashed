@@ -24,6 +24,7 @@ script = ExtResource("1_sb1oc")
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="Ground" parent="Objects" instance=ExtResource("2_4icbo")]
+collision_layer = 2
 
 [node name="Shadows" type="Sprite2D" parent="Objects"]
 position = Vector2(253.5, 141.5)
@@ -31,6 +32,7 @@ texture = ExtResource("3_4arij")
 
 [node name="Foliage" parent="Objects" instance=ExtResource("4_wld22")]
 position = Vector2(-1, -3)
+collision_layer = 2
 
 [node name="BinsItems" type="Node2D" parent="."]
 script = ExtResource("5_hwix6")
@@ -53,6 +55,7 @@ collision_layer = 2
 
 [node name="Conveyor" parent="." instance=ExtResource("5_2akyw")]
 position = Vector2(129, 246)
+collision_layer = 2
 
 [node name="ConveyorLeftArea" type="Area2D" parent="Conveyor"]
 position = Vector2(65, -96)
@@ -64,10 +67,10 @@ shape = SubResource("RectangleShape2D_kpsen")
 
 [node name="BigBin" parent="Conveyor" instance=ExtResource("6_h5ydq")]
 position = Vector2(-126, -65)
-collision_layer = 2
 
 [node name="ConveyorRight" parent="." instance=ExtResource("9_sd75t")]
 position = Vector2(380, 246)
+collision_layer = 2
 
 [node name="ConveyorRightArea" type="Area2D" parent="ConveyorRight"]
 position = Vector2(65, -96)
@@ -79,7 +82,6 @@ shape = SubResource("RectangleShape2D_kpsen")
 
 [node name="BigBinRight" parent="ConveyorRight" instance=ExtResource("10_gxw7w")]
 position = Vector2(26, -66)
-collision_layer = 2
 
 [node name="SpawnPosLeft" type="Marker2D" parent="."]
 position = Vector2(65, 220)

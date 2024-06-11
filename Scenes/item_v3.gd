@@ -1,6 +1,5 @@
 extends Sprite2D
-class_name test_class
-
+class_name item_class
 
 var type = "recycle"
 var direction: int
@@ -15,12 +14,10 @@ func random_item(selection_list, selection_num, dict):
 	#returns item texture, associated bin
 	return[texture, attribute]
 	
-	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
