@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bli10y5ka33kq" path="res://Final Assets/shadows.png" id="3_4arij"]
 [ext_resource type="PackedScene" uid="uid://bodt8vmmr20ta" path="res://Scenes/objects/foliage.tscn" id="4_wld22"]
 [ext_resource type="PackedScene" uid="uid://dkiintp78mnb1" path="res://Scenes/objects/conveyor.tscn" id="5_2akyw"]
-[ext_resource type="Script" path="res://Scenes/Bins+Items.gd" id="5_hwix6"]
+[ext_resource type="Script" path="res://Scenes/Bins+Items_v2.gd" id="5_an2wr"]
 [ext_resource type="PackedScene" uid="uid://dls75v3ku2u3k" path="res://Scenes/objects/big_bin.tscn" id="6_h5ydq"]
 [ext_resource type="PackedScene" uid="uid://03v4i72cvh4k" path="res://Scenes/objects/blue_bin.tscn" id="7_yb7m1"]
 [ext_resource type="PackedScene" uid="uid://dqce2jekrfp0y" path="res://Scenes/objects/red_bin.tscn" id="8_0fkh7"]
@@ -35,7 +35,7 @@ position = Vector2(-1, -3)
 collision_layer = 2
 
 [node name="BinsItems" type="Node2D" parent="."]
-script = ExtResource("5_hwix6")
+script = ExtResource("5_an2wr")
 
 [node name="ItemSpawnTimer" type="Timer" parent="BinsItems"]
 wait_time = 3.0

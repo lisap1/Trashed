@@ -16,6 +16,8 @@ func _process(delta):
 	input = movement_input()
 	velocity = input * SPEED * delta
 	move_and_slide()
+	#print(global_position)
+	GlobalVars.player_pos = global_position
 	# play animations according to direction
 	if input == Vector2.ZERO:
 		anim.stop()

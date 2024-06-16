@@ -3,6 +3,7 @@ class_name item_class
 
 var type = "recycle"
 var direction: int
+var interacted: bool
 
 # choosing a random item from list of all items, the number of total items, item+bin dict
 # i need to return the name of the item, not png

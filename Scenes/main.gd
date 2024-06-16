@@ -1,11 +1,11 @@
 extends Node2D
 const front_order = -2
 var exited = false
-
+signal primary_action_pressed
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
-
+			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	# player is moved to the front of object hierarchy when not behind an object
@@ -27,4 +27,8 @@ func _on_conveyor_left_area_body_exited(_body):
 
 func _on_conveyor_right_area_body_exited(_body):
 	exited = true
+	
+func _input(event):
+	if event.is_action_pressed("primary action"):
+		pass
 	
