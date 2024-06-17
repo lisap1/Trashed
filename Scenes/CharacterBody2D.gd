@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 15000
+const SPEED = 10000
 var input = Vector2.ZERO
 @onready var anim = get_node("Player Sprite")
 

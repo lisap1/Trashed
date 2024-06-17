@@ -31,4 +31,5 @@ func _on_conveyor_right_area_body_exited(_body):
 func _input(event):
 	if event.is_action_pressed("primary action"):
 		pass
-	
+
+

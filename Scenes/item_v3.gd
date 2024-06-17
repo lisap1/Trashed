@@ -1,7 +1,7 @@
 extends Sprite2D
 class_name item_class
 
-var type = "recycle"
+var bin: String
 var direction: int
 var interacted: bool
 
@@ -10,10 +10,10 @@ var interacted: bool
 func random_item(selection_list, selection_num, dict):
 	var random_tex = selection_list[randi() % selection_num]
 	# changing sprite to the random sprite selected
-	var texture = random_tex
+	var tex = random_tex
 	var attribute = dict[random_tex]
 	#returns item texture, associated bin
-	return[texture, attribute]
+	return[tex, attribute]
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
