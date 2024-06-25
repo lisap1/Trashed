@@ -1,6 +1,6 @@
 extends Node2D
 
-var speed: int = 30
+var speed: int = 20
 # whether player is in an item area
 var body_in_area: bool = false
 # item areas that player is currently in
@@ -43,11 +43,11 @@ var item_bin_dict = {
 	doggy_bag : "red",
 	styrofoam : "red",
 	tissues : "red",
-	
 	}
-var all_items = [apple, bread, broken_glass, can, cardboard, cheese, chicken, 
-		fish, glass_bottle, paper, plastic_bag, plastic_bottle, doggy_bag, 
-		styrofoam, tissues]
+
+var all_items = [apple, bread, broken_glass, can, cardboard, cheese,
+		chicken, fish, glass_bottle, paper, plastic_bag, plastic_bottle, 
+		doggy_bag, styrofoam, tissues]
 const NUM_ITEMS = 15
 # conveyor lists
 var right_con_list = []
@@ -169,6 +169,9 @@ func _process(delta):
 				# if item is being held by player, move to be above the player
 				if child.interacted == true:
 					child.position = GlobalVars.player_pos
+	if GlobalVars.strikes == 3:
+		GlobalVars.strikes = 0
+		get_tree().change_scene_to_file("res://Scenes/game_over_screen.tscn")
 	
 # these functions are called when player enters/exits a bin area
 # states if player is in an area or not, and the type of bin they approached

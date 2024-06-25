@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://cs2tdhd7thhkk"]
+
+[ext_resource type="Texture2D" uid="uid://cyjsnhfnpvhor" path="res://Final Assets/sky_start_screen_parallax.png" id="1_ghsmp"]
+[ext_resource type="Script" path="res://Scenes/game_over_screen.gd" id="1_jb714"]
+[ext_resource type="Texture2D" uid="uid://byn5dfbhctq2x" path="res://Final Assets/game_over_text.png" id="2_i4ibi"]
+[ext_resource type="Texture2D" uid="uid://ci603ytxmucvo" path="res://Final Assets/play_again_unpressed.png" id="3_nrw6a"]
+[ext_resource type="Texture2D" uid="uid://tgwnj05mv30f" path="res://Final Assets/play_again_pressed.png" id="4_f3b8w"]
+[ext_resource type="Texture2D" uid="uid://cu6y041s6nvtc" path="res://Final Assets/quit_button_unpressed.png" id="5_umemc"]
+[ext_resource type="Texture2D" uid="uid://bif1ly2a0bf00" path="res://Final Assets/quit_button_pressed.png" id="6_6xgtr"]
+
+[node name="GameOverScreen" type="CanvasLayer"]
+script = ExtResource("1_jb714")
+
+[node name="GameOverText" type="Sprite2D" parent="."]
+position = Vector2(251, 68)
+texture = ExtResource("2_i4ibi")
+
+[node name="PlayAgainButton" type="TextureButton" parent="."]
+offset_left = 179.0
+offset_top = 122.0
+offset_right = 329.0
+offset_bottom = 162.0
+texture_normal = ExtResource("3_nrw6a")
+texture_pressed = ExtResource("4_f3b8w")
+
+[node name="QuitButton" type="TextureButton" parent="."]
+offset_left = 180.0
+offset_top = 175.0
+offset_right = 330.0
+offset_bottom = 215.0
+texture_normal = ExtResource("5_umemc")
+texture_pressed = ExtResource("6_6xgtr")
+
+[node name="CloudBackground" type="ParallaxBackground" parent="."]
+
+[node name="SkyTop" type="ParallaxLayer" parent="CloudBackground"]
+motion_mirroring = Vector2(500, 0)
+
+[node name="SkyTop1" type="Sprite2D" parent="CloudBackground/SkyTop"]
+position = Vector2(251, 142)
+texture = ExtResource("1_ghsmp")
+
+[node name="SkyBottom" type="ParallaxLayer" parent="CloudBackground"]
+motion_mirroring = Vector2(500, 0)
+
+[node name="SkyBottom1" type="Sprite2D" parent="CloudBackground/SkyBottom"]
+position = Vector2(98, 267)
+texture = ExtResource("1_ghsmp")
+
+[connection signal="pressed" from="PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
