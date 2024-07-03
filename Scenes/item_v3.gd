@@ -1,5 +1,5 @@
+class_name ItemClass
 extends Sprite2D
-class_name item_class
 
 var bin: String
 var direction: int
@@ -14,11 +14,3 @@ func random_item(selection_list, selection_num, dict):
 	var attribute = dict[random_tex]
 	#returns item texture, associated bin
 	return[tex, attribute]
-	
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass

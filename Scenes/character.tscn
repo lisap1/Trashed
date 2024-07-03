@@ -1,7 +1,7 @@
 [gd_scene load_steps=47 format=3 uid="uid://bcd13dttv285b"]
 
+[ext_resource type="Script" path="res://Scenes/character.gd" id="1_33ale"]
 [ext_resource type="Texture2D" uid="uid://dirhyfktbnerx" path="res://character animation spritesheets/front_running.png" id="1_f0elf"]
-[ext_resource type="Script" path="res://Scenes/CharacterBody2D.gd" id="1_y71qw"]
 [ext_resource type="Texture2D" uid="uid://34q08n1kvior" path="res://character animation spritesheets/right_down_running.png" id="2_r0xkw"]
 [ext_resource type="Texture2D" uid="uid://cwqabwjlfk4or" path="res://character animation spritesheets/left_running.png" id="3_lghxd"]
 [ext_resource type="Texture2D" uid="uid://bjryigr1t84sc" path="res://character animation spritesheets/down_left_running.png" id="4_cytpk"]
@@ -294,13 +294,13 @@ _data = {
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 collision_mask = 7
-script = ExtResource("1_y71qw")
+script = ExtResource("1_33ale")
 
 [node name="PlayerShadow" type="Sprite2D" parent="CharacterBody2D"]
 position = Vector2(-3, 59)
 texture = ExtResource("10_22joa")
 
-[node name="Player Sprite" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(-3, 35)
 scale = Vector2(1.82031, 1.82031)
 sprite_frames = SubResource("SpriteFrames_2fcal")
@@ -312,8 +312,8 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_pdt50")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="Player Animation" type="AnimationPlayer" parent="."]
-root_node = NodePath("../CharacterBody2D/Player Sprite")
+[node name="PlayerAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CharacterBody2D/PlayerSprite")
 libraries = {
 "": SubResource("AnimationLibrary_oyd54")
 }

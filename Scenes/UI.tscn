@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cokwtsrpk0d4m"]
+
+[ext_resource type="FontFile" uid="uid://chk5gg5vi6bxa" path="res://PixelifySans-VariableFont_wght.ttf" id="1_3tp0r"]
+
+[sub_resource type="Theme" id="Theme_lldi0"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 81.0
+offset_bottom = 41.0
+theme = SubResource("Theme_lldi0")
+theme_override_fonts/font = ExtResource("1_3tp0r")
+text = "Trashed "

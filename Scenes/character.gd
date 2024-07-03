@@ -2,13 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 10000
 var input = Vector2.ZERO
-@onready var anim = get_node("Player Sprite")
-
-# getting direction from user input
-func movement_input():
-	input.x = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
-	input.y = int(Input.is_action_pressed("down")) - int(Input.is_action_pressed("up"))
-	return input.normalized()
+@onready var anim = get_node("PlayerSprite")
 
 	
 func _process(delta):
@@ -38,4 +32,9 @@ func _process(delta):
 	elif input.x > 0 and input.y > 0:
 		anim.play("down right")
 	
-		
+	
+	# getting direction from user input
+func movement_input():
+	input.x = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
+	input.y = int(Input.is_action_pressed("down")) - int(Input.is_action_pressed("up"))
+	return input.normalized()
