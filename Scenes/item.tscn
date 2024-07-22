@@ -1,6 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://dflyn1vc72a4b"]
 
-[ext_resource type="Script" path="res://Scenes/item_v3.gd" id="1_je3p8"]
+[ext_resource type="Script" path="res://item_test.gd" id="1_xuoax"]
 
 [node name="ItemSprite" type="Sprite2D"]
-script = ExtResource("1_je3p8")
+script = ExtResource("1_xuoax")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

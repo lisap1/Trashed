@@ -1,6 +1,7 @@
 extends Node2D
-const FRONT_ORDER = -2
+const FRONT_ORDER = -3
 var exited = false
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
