@@ -2,7 +2,7 @@ extends Node2D
 const FRONT_ORDER = -3
 var exited = false
 
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	# player is moved to the front of object hierarchy when not behind an object

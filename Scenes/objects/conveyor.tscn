@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://dkiintp78mnb1"]
 
-[ext_resource type="Texture2D" uid="uid://dy8bsrive44ua" path="res://Final Assets/conveyor_spritesheet.png" id="1_nhgpn"]
+[ext_resource type="Texture2D" uid="uid://b402w4wm5wnm6" path="res://Final Assets/conveyor_spritesheet.png" id="1_nhgpn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3wl44"]
 atlas = ExtResource("1_nhgpn")
@@ -105,7 +105,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8yjx"]
@@ -116,6 +116,7 @@ size = Vector2(171, 25)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -11.5)
 sprite_frames = SubResource("SpriteFrames_v8ic2")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -1)

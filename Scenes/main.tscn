@@ -135,9 +135,13 @@ position = Vector2(256, 121)
 [node name="Items" type="Node2D" parent="."]
 
 [node name="UI" parent="." instance=ExtResource("14_ti7pd")]
-visible = false
 script = ExtResource("15_dbdx3")
 
+[node name="CoinRewardTimer" type="Timer" parent="UI"]
+one_shot = true
+
+[connection signal="correct_sort" from="BinsItems" to="UI" method="_on_bins_items_correct_sort"]
+[connection signal="strike_added" from="BinsItems" to="UI" method="_on_bins_items_strike_added"]
 [connection signal="timeout" from="BinsItems/ItemSpawnTimer" to="BinsItems" method="_on_item_spawn_timer_timeout"]
 [connection signal="body_entered" from="BinsItems/RedBin/RedBinArea" to="BinsItems" method="_on_red_bin_area_body_entered"]
 [connection signal="body_exited" from="BinsItems/RedBin/RedBinArea" to="BinsItems" method="_on_red_bin_area_body_exited"]
@@ -150,3 +154,4 @@ script = ExtResource("15_dbdx3")
 [connection signal="body_exited" from="Conveyor/ConveyorLeftArea" to="." method="_on_conveyor_left_area_body_exited"]
 [connection signal="body_entered" from="ConveyorRight/ConveyorRightArea" to="." method="_on_conveyor_right_area_body_entered"]
 [connection signal="body_exited" from="ConveyorRight/ConveyorRightArea" to="." method="_on_conveyor_right_area_body_exited"]
+[connection signal="timeout" from="UI/CoinRewardTimer" to="UI" method="_on_coin_reward_timer_timeout"]

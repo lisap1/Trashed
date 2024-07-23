@@ -19,7 +19,7 @@ const STYROFOAM = "res://Final Assets/items/styrofoam_item.png"
 const TISSUES = "res://Final Assets/items/tissues_item.png"
 
 # game variables
-var speed: int = 10
+var speed: int = 25
 var player_in_item_area: bool = false
 var item_bodies_curr_entered = []
 var item_held = false
@@ -52,6 +52,9 @@ var item_bin_dict = {
 var all_items = [APPLE, BREAD, BROKEN_GLASS, CAN, CARDBOARD, CHEESE,
 		CHEESE, FISH, GLASS_BOTTLE, PAPER, PLASTIC_BAG, PLASTIC_BOTTLE, 
 		DOGGY_BAG, STYROFOAM, TISSUES]
+		
+signal strike_added
+signal correct_sort
 
 func _input(event):
 	var all_children = $"../Items".get_children()
@@ -80,10 +83,10 @@ func _input(event):
 					# checks if item was sorted into the correct bin
 					if child.bin == bin:
 						print("correct")
+						correct_sort.emit(bin)
 					else: 
 						# if incorrect adds a strike
-						GlobalVars.strikes += 1
-						print("Strikes: ", GlobalVars.strikes)
+						add_strike()
 					# after sorting, item is removed from the scene
 					child.queue_free()
 					item_held = false
@@ -118,6 +121,12 @@ func choose_conveyor(right_conveyor, left_conveyor, left_list, right_list):
 	else:
 		selected_conveyor = conveyors[randi() % 2]
 	return selected_conveyor	
+	
+
+func add_strike():
+	GlobalVars.strikes += 1
+	print("Strikes: ", GlobalVars.strikes)
+	strike_added.emit()
 		
 		
 # when player enters an item area
@@ -165,8 +174,7 @@ func _on_red_bin_area_body_exited(_body):
 # when item reaches the end of the conveyor, a strike is added
 # item gets removed
 func _on_conveyor_end_area_entered(area):
-	GlobalVars.strikes += 1
-	print("Strikes: ", GlobalVars.strikes)
+	add_strike()
 	var parent = area.get_parent()
 	parent.queue_free()
 
