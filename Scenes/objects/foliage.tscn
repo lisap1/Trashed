@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bodt8vmmr20ta"]
 
-[ext_resource type="Texture2D" uid="uid://bl3kebk7pa6kw" path="res://Final Assets/foliage.png" id="1_q43fn"]
+[ext_resource type="Texture2D" uid="uid://bpxf8dkd6244j" path="res://Final Assets/foliage.png" id="1_q43fn"]
 
 [node name="Foliage" type="StaticBody2D"]
 

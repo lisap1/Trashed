@@ -19,12 +19,13 @@ const STYROFOAM = "res://Final Assets/items/styrofoam_item.png"
 const TISSUES = "res://Final Assets/items/tissues_item.png"
 
 # game variables
-var speed: int = 25
+var speed: int = 10
 var player_in_item_area: bool = false
-var item_bodies_curr_entered = []
+var item_bodies_currently_entered = []
 var item_held = false
 var player_in_bin_area = false
 var bin = ''
+var items_sorted: int = 0
 
 # conveyor variables
 var right_con_list = []
@@ -32,30 +33,61 @@ var left_con_list = []
 var selected_conveyor = ''
 
 var item_bin_dict = {
-	APPLE : "green",
-	BREAD : "green",
-	CHEESE : "green",
-	CHICKEN: "green",
-	FISH : "green",
-	CAN : "blue",
-	CARDBOARD : "blue",
-	PAPER : "blue",
-	GLASS_BOTTLE : "blue",
-	PLASTIC_BOTTLE : "blue",
-	BROKEN_GLASS : "red",
-	PLASTIC_BAG : "red",
-	DOGGY_BAG : "red",
-	STYROFOAM : "red",
-	TISSUES : "red",
+	APPLE : "food scraps",
+	BREAD : "food scraps",
+	CHEESE : "food scraps",
+	CHICKEN: "food scraps",
+	FISH : "food scraps",
+	CAN : "recycling",
+	CARDBOARD : "recycling",
+	PAPER : "recycling",
+	GLASS_BOTTLE : "recycling",
+	PLASTIC_BOTTLE : "recycling",
+	BROKEN_GLASS : "general waste",
+	PLASTIC_BAG : "general waste",
+	DOGGY_BAG : "general waste",
+	STYROFOAM : "general waste",
+	TISSUES : "general waste",
 	}
 
 var all_items = [APPLE, BREAD, BROKEN_GLASS, CAN, CARDBOARD, CHEESE,
-		CHEESE, FISH, GLASS_BOTTLE, PAPER, PLASTIC_BAG, PLASTIC_BOTTLE, 
+		CHICKEN, FISH, GLASS_BOTTLE, PAPER, PLASTIC_BAG, PLASTIC_BOTTLE, 
 		DOGGY_BAG, STYROFOAM, TISSUES]
+		
+var item_names = ["apple", "bread", "broken glass", "can", "cardboard", 
+		"cheese", "chicken", "fish", "glass bottle", "paper", "plastic bag",
+		"plastic bottle", "dog poo bag", "styrofoam", "used tissues"]
 		
 signal strike_added
 signal correct_sort
+	
+# show instructions when player is in practice mode 
+func _ready():
+	if GlobalVars.practice_mode_on == true:
+		$"../UI/Instructions".show()
+	else:
+		$"../UI/Instructions".hide()
 
+
+# check an objects type 
+func check_children_type(parent, type): 
+	for child in parent.get_children():
+		if is_instance_of(child, type):
+			return child
+
+
+# Get the item which is being interacted with, to display label
+func get_active_label():
+	if GlobalVars.practice_mode_on == true and item_held == true:
+			for child in $"../Items".get_children():
+				if child.interacted == true:
+					# make the label visible
+					var child_label = check_children_type(child, Label)
+					return child_label
+	else:
+		return null
+	
+	
 func _input(event):
 	var all_children = $"../Items".get_children()
 	# when space bar is pressed: check if player is able to 
@@ -67,22 +99,22 @@ func _input(event):
 			for child in all_children:
 				# if the player is in an items area, 
 				# change its speed to 0
-				if child == item_bodies_curr_entered[0]:
+				if child == item_bodies_currently_entered[0]:
 					child.direction = 0
 					# change interactability
 					child.interacted = true
 					# removing the area2d from the item
-					var child_area = child.get_children()
-					child_area[0].queue_free()
+					var child_area = check_children_type(child, Area2D)
+					child_area.queue_free()
 					item_held = true
 					
-		#  on sorting attempt by player
+		#  sorting attempt by player
 		if player_in_bin_area == true and item_held == true:
 			for child in all_children:
 				if child.interacted == true:
+					items_sorted += 1
 					# checks if item was sorted into the correct bin
 					if child.bin == bin:
-						print("correct")
 						correct_sort.emit(bin)
 					else: 
 						# if incorrect adds a strike
@@ -90,9 +122,21 @@ func _input(event):
 					# after sorting, item is removed from the scene
 					child.queue_free()
 					item_held = false
+	
+	# when player presses shift in practice mode, while holding an item,
+	# show the items label
+	if event.is_action_pressed("shift"):
+		var child_label = get_active_label()
+		if child_label != null:
+			child_label.show()
+	# when player releases shift hide the items label
+	if event.is_action_released("shift"):
+		var child_label = get_active_label()
+		if child_label != null:
+			child_label.hide()
 
 
-func _process(delta):
+func _process(delta):	
 	# movement for items
 	if $"../Items" != null and $"../Items".get_children().size() > 0:
 		var all_children = $"../Items".get_children()
@@ -103,11 +147,23 @@ func _process(delta):
 				# move item above the player
 				if child.interacted == true:
 					child.position = GlobalVars.player_pos
-	
+					
+					
 	# change to game over screen when strikes = 3
 	if GlobalVars.strikes == 3:
 		GlobalVars.strikes = 0
 		get_tree().change_scene_to_file("res://Scenes/game_over_screen.tscn")
+		
+	# conveyor speed 
+	if GlobalVars.practice_mode_on == true:
+		$ItemSpawnTimer.set_wait_time(6) 
+	elif items_sorted < 60:
+		$ItemSpawnTimer.set_wait_time(-0.04 * items_sorted + 4.2) 
+	else:
+		$ItemSpawnTimer.set_wait_time(1.8) 
+		
+	
+
 		
 
 # chooses conveyor
@@ -125,28 +181,27 @@ func choose_conveyor(right_conveyor, left_conveyor, left_list, right_list):
 
 func add_strike():
 	GlobalVars.strikes += 1
-	print("Strikes: ", GlobalVars.strikes)
 	strike_added.emit()
 		
 		
 # when player enters an item area
 func area_entered(item_spawn):
 	player_in_item_area = true
-	item_bodies_curr_entered.append(item_spawn)
+	item_bodies_currently_entered.append(item_spawn)
 
 
 # when player exits an item area
 func area_exited(item_spawm):
 	# removes data of area player was in
 	player_in_item_area = false
-	item_bodies_curr_entered.erase(item_spawm)
+	item_bodies_currently_entered.erase(item_spawm)
 
 
 # these functions are called when player enters/exits a bin area
 # states if player is in an area or not, and the type of bin they approached
 func _on_green_bin_area_body_entered(_body):
 	player_in_bin_area = true
-	bin = "green"
+	bin = "food scraps"
 
 
 func _on_green_bin_area_body_exited(_body):
@@ -155,7 +210,7 @@ func _on_green_bin_area_body_exited(_body):
 
 func _on_blue_bin_area_body_entered(_body):
 	player_in_bin_area = true
-	bin = "blue"
+	bin = "recycling"
 
 
 func _on_blue_bin_area_body_exited(_body):
@@ -164,7 +219,7 @@ func _on_blue_bin_area_body_exited(_body):
 	
 func _on_red_bin_area_body_entered(_body):
 	player_in_bin_area = true
-	bin = "red"
+	bin = "general waste"
 
 
 func _on_red_bin_area_body_exited(_body):
@@ -182,9 +237,11 @@ func _on_conveyor_end_area_entered(area):
 func _on_item_spawn_timer_timeout():
 	# choose random item
 	var item_spawn = ItemClass.new()	
-	var rand_item = item_spawn.random_item(all_items, TOTAL_ITEMS, item_bin_dict)
+	var rand_item = item_spawn.random_item(all_items, TOTAL_ITEMS, 
+			item_bin_dict)
 	# establish the bin that the item belongs to
 	item_spawn.bin = rand_item[1]
+	item_spawn.item_name = item_names[rand_item[2]]
 	#change sprite texture
 	item_spawn.texture = load(rand_item[0])
 	#create area 2d
@@ -197,6 +254,18 @@ func _on_item_spawn_timer_timeout():
 	item_area.set_collision_layer_value(3, true)
 	item_area.set_collision_layer_value(1, false)
 	item_area.set_collision_mask_value(1, true)
+	
+	if GlobalVars.practice_mode_on == true:
+		var bin_label = Label.new()
+		bin_label.set("theme_override_fonts/font", 
+				load("res://PixelifySans-VariableFont_wght.ttf"))
+		bin_label.set("theme_override_font_sizes/font_size", 9)
+		bin_label.set("theme_override_colors/font_color", "526cff")
+		bin_label.position = Vector2(15, -10)
+		bin_label.text = item_spawn.item_name + "\n" + item_spawn.bin
+		item_spawn.add_child(bin_label)
+		bin_label.hide()
+
 	# choose spawn point
 	var chosen_spawn_point = choose_conveyor($"../SpawnPosRight", 
 			$"../SpawnPosLeft", left_con_list, right_con_list)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bjulqsojtshps"]
 
-[ext_resource type="Texture2D" uid="uid://y5342dceydfm" path="res://Final Assets/ground.png" id="1_a72fe"]
+[ext_resource type="Texture2D" uid="uid://bs3bcucr7oynt" path="res://Final Assets/ground.png" id="1_a72fe"]
 
 [node name="Ground" type="StaticBody2D"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckh5b6tvlito2"]
+[gd_scene load_steps=11 format=3 uid="uid://t6dt57fgc4ty"]
 
 [ext_resource type="Script" path="res://Scenes/start_screen.gd" id="1_yp4du"]
 [ext_resource type="Texture2D" uid="uid://b5gq0ebeaivjh" path="res://Final Assets/play_button_unpressed.png" id="2_raqgp"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cu6y041s6nvtc" path="res://Final Assets/quit_button_unpressed.png" id="4_v1b2d"]
 [ext_resource type="Texture2D" uid="uid://cyjsnhfnpvhor" path="res://Final Assets/sky_start_screen_parallax.png" id="5_2py4f"]
 [ext_resource type="Texture2D" uid="uid://bif1ly2a0bf00" path="res://Final Assets/quit_button_pressed.png" id="5_btrao"]
+[ext_resource type="Texture2D" uid="uid://cahqbugin82cl" path="res://Final Assets/practice_mode_unpressed.png" id="6_6mnvl"]
 [ext_resource type="Texture2D" uid="uid://v2gtdym68oph" path="res://Final Assets/tree_start_screen_parallax.png" id="6_duw1r"]
+[ext_resource type="Texture2D" uid="uid://b4h5500lomrgf" path="res://Final Assets/practice_mode_pressed.png" id="7_a6010"]
 [ext_resource type="Texture2D" uid="uid://tfgwm075kpwa" path="res://Final Assets/title.png" id="8_t02wx"]
 
 [node name="StartScreen" type="Node2D"]
@@ -14,9 +16,9 @@ script = ExtResource("1_yp4du")
 
 [node name="Play" type="TextureButton" parent="."]
 offset_left = 172.0
-offset_top = 131.0
+offset_top = 104.0
 offset_right = 322.0
-offset_bottom = 169.0
+offset_bottom = 142.0
 texture_normal = ExtResource("2_raqgp")
 texture_pressed = ExtResource("3_3pouq")
 
@@ -27,6 +29,14 @@ offset_right = 322.0
 offset_bottom = 271.0
 texture_normal = ExtResource("4_v1b2d")
 texture_pressed = ExtResource("5_btrao")
+
+[node name="PracticeMode" type="TextureButton" parent="."]
+offset_left = 172.0
+offset_top = 147.0
+offset_right = 322.0
+offset_bottom = 187.0
+texture_normal = ExtResource("6_6mnvl")
+texture_pressed = ExtResource("7_a6010")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -53,3 +63,4 @@ texture = ExtResource("8_t02wx")
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PracticeMode" to="." method="_on_practice_mode_pressed"]

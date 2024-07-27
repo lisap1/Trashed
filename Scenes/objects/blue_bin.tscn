@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://03v4i72cvh4k"]
 
-[ext_resource type="Texture2D" uid="uid://bvn4p88oi2eey" path="res://Final Assets/blue_bin.png" id="1_3p45b"]
+[ext_resource type="Texture2D" uid="uid://nd4vxaiih2fv" path="res://Final Assets/blue_bin.png" id="1_3p45b"]
 
 [node name="BlueBin" type="StaticBody2D"]
 

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct1ophjh5kl4h"]
+
+[ext_resource type="Texture2D" uid="uid://btv8qjk1g8iyh" path="res://Final Assets/side_text_box.png" id="1_wdgca"]
+[ext_resource type="FontFile" uid="uid://chk5gg5vi6bxa" path="res://PixelifySans-VariableFont_wght.ttf" id="2_2mlgm"]
+
+[node name="HintTextBox" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wdgca")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -38.0
+offset_top = -26.0
+offset_right = 59.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.295959, 0.14995, 0.0770851, 1)
+theme_override_fonts/font = ExtResource("2_2mlgm")
+theme_override_font_sizes/font_size = 11
+text = "Hold down
+shift to get 
+a hint!"

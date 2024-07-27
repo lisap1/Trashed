@@ -7,8 +7,10 @@ func _process(delta):
 
 
 func _on_play_again_button_pressed():
+	# change scene to main gameplay screen 
 	get_tree().change_scene_to_file("res://Scenes/main.tscn")
 
 
 func _on_quit_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/objects/start_screen.tscn")
+	# change scene to start screen
+	get_tree().change_scene_to_file("res://Scenes/start_screen.tscn")

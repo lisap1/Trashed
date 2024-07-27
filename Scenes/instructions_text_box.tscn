@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cud00hb0dwjrr"]
+
+[ext_resource type="Texture2D" uid="uid://btv8qjk1g8iyh" path="res://Final Assets/side_text_box.png" id="1_kpuwt"]
+[ext_resource type="FontFile" uid="uid://chk5gg5vi6bxa" path="res://PixelifySans-VariableFont_wght.ttf" id="2_rifn0"]
+
+[node name="InstructionsTextBox" type="Node2D"]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_left = -7.0
+offset_top = 5.0
+offset_right = 79.0
+offset_bottom = 118.0
+texture = ExtResource("1_kpuwt")
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="Label" type="Label" parent="."]
+offset_left = -3.0
+offset_top = 11.0
+offset_right = 94.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0.295959, 0.14995, 0.0770851, 1)
+theme_override_fonts/font = ExtResource("2_rifn0")
+theme_override_font_sizes/font_size = 11
+text = "Use arrow
+keys or wasd
+to move "
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -3.0
+offset_top = 72.0
+offset_right = 94.0
+offset_bottom = 138.0
+theme_override_colors/font_color = Color(0.295959, 0.14995, 0.0770851, 1)
+theme_override_fonts/font = ExtResource("2_rifn0")
+theme_override_font_sizes/font_size = 11
+text = "Press space
+to interact"
