@@ -1,0 +1,125 @@
+[gd_scene load_steps=6 format=3 uid="uid://dr6ldhbga0xfx"]
+
+[ext_resource type="Texture2D" uid="uid://dcgvlr5mk6ery" path="res://Final Assets/button_unpressed.png" id="1_j4p1j"]
+[ext_resource type="Script" path="res://Scenes/pause_menu.gd" id="1_p6qe7"]
+[ext_resource type="Texture2D" uid="uid://ctlt77hfiytln" path="res://Final Assets/button_pressed.png" id="2_055b6"]
+[ext_resource type="FontFile" uid="uid://chk5gg5vi6bxa" path="res://PixelifySans-VariableFont_wght.ttf" id="3_ra00o"]
+[ext_resource type="PackedScene" uid="uid://dsnc3357q2ww2" path="res://Scenes/pause_menu_instructions.tscn" id="5_1unac"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p6qe7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 516.0
+offset_bottom = 286.0
+color = Color(0.117647, 0, 0.658824, 0.462745)
+
+[node name="ResumeBtn" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 170.0
+offset_top = 98.0
+offset_right = 320.0
+offset_bottom = 130.0
+texture_normal = ExtResource("1_j4p1j")
+texture_pressed = ExtResource("2_055b6")
+
+[node name="Label" type="Label" parent="ResumeBtn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.53125
+anchor_right = 0.8
+anchor_bottom = 0.53125
+offset_left = -121.0
+offset_top = -18.0
+offset_right = 33.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ra00o")
+theme_override_font_sizes/font_size = 21
+text = "Resume Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Instructions" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 170.0
+offset_top = 138.0
+offset_right = 320.0
+offset_bottom = 170.0
+texture_normal = ExtResource("1_j4p1j")
+texture_pressed = ExtResource("2_055b6")
+
+[node name="Label" type="Label" parent="Instructions"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.873333
+anchor_top = 0.6875
+anchor_right = 0.873333
+anchor_bottom = 0.6875
+offset_left = -121.0
+offset_top = -18.0
+offset_right = 33.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ra00o")
+theme_override_font_sizes/font_size = 21
+text = "Instructions"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitBtn" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 170.0
+offset_top = 179.0
+offset_right = 320.0
+offset_bottom = 211.0
+texture_normal = ExtResource("1_j4p1j")
+texture_pressed = ExtResource("2_055b6")
+
+[node name="Label" type="Label" parent="QuitBtn"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -18.0
+offset_right = 77.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_ra00o")
+theme_override_font_sizes/font_size = 21
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Paused" type="Label" parent="."]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 38.0
+offset_right = 309.0
+offset_bottom = 84.0
+theme_override_fonts/font = ExtResource("3_ra00o")
+theme_override_font_sizes/font_size = 37
+text = "Paused"
+
+[node name="PauseMenuInstructions" parent="." instance=ExtResource("5_1unac")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="Instructions" to="." method="_on_instructions_pressed"]
+[connection signal="pressed" from="QuitBtn" to="." method="_on_quit_btn_pressed"]

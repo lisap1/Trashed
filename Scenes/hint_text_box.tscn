@@ -6,16 +6,19 @@
 [node name="HintTextBox" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4, 0)
 texture = ExtResource("1_wdgca")
+flip_h = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = -38.0
-offset_top = -26.0
+offset_top = -28.0
 offset_right = 59.0
-offset_bottom = 40.0
+offset_bottom = 38.0
 theme_override_colors/font_color = Color(0.295959, 0.14995, 0.0770851, 1)
 theme_override_fonts/font = ExtResource("2_2mlgm")
-theme_override_font_sizes/font_size = 11
-text = "Hold down
-shift to get 
+theme_override_font_sizes/font_size = 9
+text = "Hold down shift 
+while holding an 
+item to get 
 a hint!"

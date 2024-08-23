@@ -2,20 +2,11 @@ extends Control
 var game_coin_end = 75
 var red_strike_tex = preload("res://Final Assets/red_strike.png")
 var coin_reward = preload("res://Final Assets/coin_reward.png")
-var UI_strikes = [$HBox/Strike1/EmptyStrike, $HBox/Strike2/EmptyStrike, 
-		$HBox/Strike3/EmptyStrike]
+var UI_strikes = [$HBox/Strike1/EmptyStrike, $HBox/Strike2/EmptyStrike, $HBox/Strike3/EmptyStrike]
 var coin_reward_queue = []
 var num_coins: int = 0
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
+var coin_addition: int = 1
+@onready var strike_indicator = $StrikeIndicator
 
 # add red strike to the UI
 func _on_bins_items_strike_added():
@@ -29,18 +20,17 @@ func _on_bins_items_strike_added():
 
 # when an item is sorted correctly
 func _on_bins_items_correct_sort(bin):
-	 # coin display
-	num_coins += 1
-	GlobalVars.total_coins += 1
+	# coin display
+	num_coins += coin_addition
 	$CoinDisplay/CoinText.text = str(num_coins)
 	var coin_spawn: Vector2 
 	# coin reward position based on where player is 
 	if bin == 'food scraps':
-		coin_spawn = $"../BinsItems/GreenBin".position + Vector2(0, -15)
+		coin_spawn = $"../../BinsItems/GreenBin".position + Vector2(0, -15)
 	elif bin == 'general waste':
-		coin_spawn = $"../BinsItems/RedBin".position + Vector2(0, -20)
+		coin_spawn = $"../../BinsItems/RedBin".position + Vector2(0, -20)
 	else:
-		coin_spawn = $"../BinsItems/BlueBin".position + Vector2(0, -30)
+		coin_spawn = $"../../BinsItems/BlueBin".position + Vector2(0, -30)
 	# create coin display
 	var coin_disp = Sprite2D.new()
 	coin_disp.texture = coin_reward
@@ -53,7 +43,23 @@ func _on_bins_items_correct_sort(bin):
 		if GlobalVars.practice_mode_on != true:
 			get_tree().change_scene_to_file("res://Scenes/win_screen.tscn")
 
-
+# after a certain amount of time, remove the coin reward sprite
 func _on_coin_reward_timer_timeout():
 	coin_reward_queue[0].queue_free()
 	coin_reward_queue.remove_at(0)
+	
+	
+func _on_bins_items_incorrect_sort():
+	strike_indicate()
+	
+
+func strike_indicate():
+	strike_indicator.visible = true
+	strike_indicator.play()
+	
+
+func _on_strike_indicator_animation_finished():
+	strike_indicator.visible = false
+
+
+

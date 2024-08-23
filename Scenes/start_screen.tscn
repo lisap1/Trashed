@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ckh5b6tvlito2"]
+[gd_scene load_steps=11 format=3 uid="uid://t6dt57fgc4ty"]
 
 [ext_resource type="Script" path="res://Scenes/start_screen.gd" id="1_yp4du"]
 [ext_resource type="Texture2D" uid="uid://b5gq0ebeaivjh" path="res://Final Assets/play_button_unpressed.png" id="2_raqgp"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cahqbugin82cl" path="res://Final Assets/practice_mode_unpressed.png" id="6_6mnvl"]
 [ext_resource type="Texture2D" uid="uid://v2gtdym68oph" path="res://Final Assets/tree_start_screen_parallax.png" id="6_duw1r"]
 [ext_resource type="Texture2D" uid="uid://b4h5500lomrgf" path="res://Final Assets/practice_mode_pressed.png" id="7_a6010"]
-[ext_resource type="Texture2D" uid="uid://tfgwm075kpwa" path="res://Final Assets/title.png" id="8_t02wx"]
+[ext_resource type="FontFile" uid="uid://chk5gg5vi6bxa" path="res://PixelifySans-VariableFont_wght.ttf" id="11_k4s3n"]
 
 [node name="StartScreen" type="Node2D"]
 script = ExtResource("1_yp4du")
@@ -57,9 +57,47 @@ position = Vector2(251, 141)
 texture = ExtResource("6_duw1r")
 metadata/_edit_lock_ = true
 
-[node name="Title" type="Sprite2D" parent="."]
-position = Vector2(249, 45)
-texture = ExtResource("8_t02wx")
+[node name="Title" type="Label" parent="."]
+offset_left = 146.0
+offset_top = 21.0
+offset_right = 358.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(0.117647, 0, 0.658824, 1)
+theme_override_fonts/font = ExtResource("11_k4s3n")
+theme_override_font_sizes/font_size = 36
+text = "Sort It Out!"
+
+[node name="TamakiMakaurau" type="Label" parent="."]
+offset_left = 249.0
+offset_top = 61.0
+offset_right = 419.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0.116766, 3.91784e-05, 0.657251, 1)
+theme_override_fonts/font = ExtResource("11_k4s3n")
+theme_override_font_sizes/font_size = 20
+text = "Tāmaki Makaurau"
+
+[node name="NewToGame" type="Label" parent="."]
+offset_left = 46.0
+offset_top = 152.0
+offset_right = 186.0
+offset_bottom = 203.0
+theme_override_colors/font_color = Color(0.117647, 0, 0.658824, 1)
+theme_override_fonts/font = ExtResource("11_k4s3n")
+theme_override_font_sizes/font_size = 11
+text = "New to Sort It 
+Out? Try practice 
+mode!"
+
+[node name="Arrow" type="Label" parent="."]
+offset_left = 137.0
+offset_top = 155.0
+offset_right = 277.0
+offset_bottom = 206.0
+theme_override_colors/font_color = Color(0.117647, 0, 0.658824, 1)
+theme_override_fonts/font = ExtResource("11_k4s3n")
+theme_override_font_sizes/font_size = 11
+text = "------>"
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

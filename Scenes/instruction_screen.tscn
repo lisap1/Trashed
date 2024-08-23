@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://cai3gsvgcxmbu"]
+
+[ext_resource type="Script" path="res://Scenes/instruction_screen.gd" id="1_3xgvo"]
+[ext_resource type="FontFile" uid="uid://chk5gg5vi6bxa" path="res://PixelifySans-VariableFont_wght.ttf" id="1_gkyqy"]
+[ext_resource type="Texture2D" uid="uid://dcgvlr5mk6ery" path="res://Final Assets/button_unpressed.png" id="2_xhm7p"]
+[ext_resource type="Texture2D" uid="uid://ctlt77hfiytln" path="res://Final Assets/button_pressed.png" id="3_vivlw"]
+
+[node name="InstructionScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3xgvo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 38.0
+offset_right = 417.0
+offset_bottom = 244.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 111.0
+offset_right = 334.0
+offset_bottom = 136.0
+theme_override_colors/font_color = Color(0.295959, 0.14995, 0.0770851, 1)
+theme_override_fonts/font = ExtResource("1_gkyqy")
+theme_override_font_sizes/font_size = 11
+text = "Use arrow keys or wasd to move "
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 66.0
+offset_right = 386.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0.295959, 0.14995, 0.0770851, 1)
+theme_override_fonts/font = ExtResource("1_gkyqy")
+theme_override_font_sizes/font_size = 10
+text = "Hold down shift while holding an item to get a hint!"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 150.0
+offset_right = 489.0
+offset_bottom = 245.0
+theme_override_colors/font_color = Color(0.295959, 0.14995, 0.0770851, 1)
+theme_override_fonts/font = ExtResource("1_gkyqy")
+theme_override_font_sizes/font_size = 10
+text = "Press space to interact with items and bins. 
+Once you've picked  up an item, interact with the bin you 
+think the item goes in. "
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 214.0
+offset_right = 327.0
+offset_bottom = 254.0
+texture_normal = ExtResource("2_xhm7p")
+texture_pressed = ExtResource("3_vivlw")
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 6.0
+offset_right = 152.0
+offset_bottom = 39.0
+theme_override_fonts/font = ExtResource("1_gkyqy")
+text = "Got it!"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

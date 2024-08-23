@@ -8,8 +8,8 @@
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 offset_left = -7.0
 offset_top = 5.0
-offset_right = 79.0
-offset_bottom = 118.0
+offset_right = 92.0
+offset_bottom = 168.0
 texture = ExtResource("1_kpuwt")
 patch_margin_top = 7
 patch_margin_right = 7
@@ -28,12 +28,17 @@ keys or wasd
 to move "
 
 [node name="Label2" type="Label" parent="."]
-offset_left = -3.0
-offset_top = 72.0
-offset_right = 94.0
-offset_bottom = 138.0
+offset_left = -4.0
+offset_top = 64.0
+offset_right = 301.0
+offset_bottom = 130.0
 theme_override_colors/font_color = Color(0.295959, 0.14995, 0.0770851, 1)
 theme_override_fonts/font = ExtResource("2_rifn0")
-theme_override_font_sizes/font_size = 11
-text = "Press space
-to interact"
+theme_override_font_sizes/font_size = 8
+text = "Press space to
+interact with items 
+and bins. 
+Once you've picked  up 
+an item, interact 
+with the bin you think 
+the item goes in. "

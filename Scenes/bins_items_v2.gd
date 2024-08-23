@@ -1,5 +1,9 @@
 extends Node2D
 
+signal strike_added
+signal correct_sort
+signal incorrect_sort
+
 const TOTAL_ITEMS = 15
 # item textures
 const APPLE = "res://Final Assets/items/apple_item.png"
@@ -20,12 +24,15 @@ const TISSUES = "res://Final Assets/items/tissues_item.png"
 
 # game variables
 var speed: int = 10
+var practice_time = 6
+var max_time = 1.8
 var player_in_item_area: bool = false
 var item_bodies_currently_entered = []
 var item_held = false
 var player_in_bin_area = false
 var bin = ''
 var items_sorted: int = 0
+var strike_limit: int = 3
 
 # conveyor variables
 var right_con_list = []
@@ -57,37 +64,8 @@ var all_items = [APPLE, BREAD, BROKEN_GLASS, CAN, CARDBOARD, CHEESE,
 var item_names = ["apple", "bread", "broken glass", "can", "cardboard", 
 		"cheese", "chicken", "fish", "glass bottle", "paper", "plastic bag",
 		"plastic bottle", "dog poo bag", "styrofoam", "used tissues"]
-		
-signal strike_added
-signal correct_sort
-	
-# show instructions when player is in practice mode 
-func _ready():
-	if GlobalVars.practice_mode_on == true:
-		$"../UI/Instructions".show()
-	else:
-		$"../UI/Instructions".hide()
 
 
-# check an objects type 
-func check_children_type(parent, type): 
-	for child in parent.get_children():
-		if is_instance_of(child, type):
-			return child
-
-
-# Get the item which is being interacted with, to display label
-func get_active_label():
-	if GlobalVars.practice_mode_on == true and item_held == true:
-			for child in $"../Items".get_children():
-				if child.interacted == true:
-					# make the label visible
-					var child_label = check_children_type(child, Label)
-					return child_label
-	else:
-		return null
-	
-	
 func _input(event):
 	var all_children = $"../Items".get_children()
 	# when space bar is pressed: check if player is able to 
@@ -119,6 +97,7 @@ func _input(event):
 					else: 
 						# if incorrect adds a strike
 						add_strike()
+						incorrect_sort.emit()
 					# after sorting, item is removed from the scene
 					child.queue_free()
 					item_held = false
@@ -146,25 +125,40 @@ func _process(delta):
 				child.position.x += speed * delta * child.direction
 				# move item above the player
 				if child.interacted == true:
-					child.position = GlobalVars.player_pos
-					
+					child.position = GlobalVars.player_pos		
 					
 	# change to game over screen when strikes = 3
-	if GlobalVars.strikes == 3:
+	if GlobalVars.strikes >= strike_limit:
 		GlobalVars.strikes = 0
 		get_tree().change_scene_to_file("res://Scenes/game_over_screen.tscn")
 		
 	# conveyor speed 
+	var progressing_time = -0.04 * items_sorted + 4.2
 	if GlobalVars.practice_mode_on == true:
-		$ItemSpawnTimer.set_wait_time(6) 
+		$ItemSpawnTimer.set_wait_time(practice_time) 
 	elif items_sorted < 60:
-		$ItemSpawnTimer.set_wait_time(-0.04 * items_sorted + 4.2) 
+		$ItemSpawnTimer.set_wait_time(progressing_time) 
 	else:
-		$ItemSpawnTimer.set_wait_time(1.8) 
-		
-	
+		$ItemSpawnTimer.set_wait_time(max_time) 
 
-		
+
+# check an objects type 
+func check_children_type(parent, type): 
+	for child in parent.get_children():
+		if is_instance_of(child, type):
+			return child
+
+
+# Get the item which is being interacted with, to display label
+func get_active_label():
+	if GlobalVars.practice_mode_on == true and item_held == true:
+			for child in $"../Items".get_children():
+				if child.interacted == true:
+					# make the label visible
+					var child_label = check_children_type(child, Label)
+					return child_label
+	else:
+		return null
 
 # chooses conveyor
 func choose_conveyor(right_conveyor, left_conveyor, left_list, right_list):
@@ -177,7 +171,7 @@ func choose_conveyor(right_conveyor, left_conveyor, left_list, right_list):
 	else:
 		selected_conveyor = conveyors[randi() % 2]
 	return selected_conveyor	
-	
+
 
 func add_strike():
 	GlobalVars.strikes += 1
@@ -230,6 +224,7 @@ func _on_red_bin_area_body_exited(_body):
 # item gets removed
 func _on_conveyor_end_area_entered(area):
 	add_strike()
+	incorrect_sort.emit()
 	var parent = area.get_parent()
 	parent.queue_free()
 
@@ -255,12 +250,13 @@ func _on_item_spawn_timer_timeout():
 	item_area.set_collision_layer_value(1, false)
 	item_area.set_collision_mask_value(1, true)
 	
+	# creating a label to display item name and bin type for practice mode 
 	if GlobalVars.practice_mode_on == true:
 		var bin_label = Label.new()
 		bin_label.set("theme_override_fonts/font", 
 				load("res://PixelifySans-VariableFont_wght.ttf"))
 		bin_label.set("theme_override_font_sizes/font_size", 9)
-		bin_label.set("theme_override_colors/font_color", "526cff")
+		bin_label.set("theme_override_colors/font_color", "1e00a8")
 		bin_label.position = Vector2(15, -10)
 		bin_label.text = item_spawn.item_name + "\n" + item_spawn.bin
 		item_spawn.add_child(bin_label)
@@ -286,4 +282,3 @@ func _on_item_spawn_timer_timeout():
 	# connecting signals for when player enters and exits item area
 	item_area.body_entered.connect(func(_body): area_entered(item_spawn))
 	item_area.body_exited.connect(func(_body): area_exited(item_spawn))
-	

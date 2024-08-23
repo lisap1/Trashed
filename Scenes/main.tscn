@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cplqn645tjfya"]
+[gd_scene load_steps=32 format=3 uid="uid://cplqn645tjfya"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_sb1oc"]
 [ext_resource type="PackedScene" uid="uid://bjulqsojtshps" path="res://Scenes/objects/ground.tscn" id="2_4icbo"]
@@ -15,23 +15,75 @@
 [ext_resource type="PackedScene" uid="uid://wmybedbgr2y6" path="res://Scenes/objects/big_bin_right.tscn" id="10_gxw7w"]
 [ext_resource type="PackedScene" uid="uid://cokwtsrpk0d4m" path="res://Scenes/UI.tscn" id="14_ti7pd"]
 [ext_resource type="Script" path="res://Scenes/UI.gd" id="15_dbdx3"]
-[ext_resource type="PackedScene" uid="uid://ct1ophjh5kl4h" path="res://Scenes/hint_text_box.tscn" id="16_co87t"]
-[ext_resource type="PackedScene" uid="uid://cud00hb0dwjrr" path="res://Scenes/instructions_text_box.tscn" id="17_4gbpb"]
+[ext_resource type="Texture2D" uid="uid://bfsbtl5r7hlby" path="res://Final Assets/strike_indicator.png" id="16_y2ndu"]
+[ext_resource type="PackedScene" uid="uid://dr6ldhbga0xfx" path="res://Scenes/pause_menu.tscn" id="18_3rr14"]
+[ext_resource type="Texture2D" uid="uid://cv5cq27ur603m" path="res://Final Assets/pause_button.png" id="18_77d1s"]
+[ext_resource type="PackedScene" uid="uid://cai3gsvgcxmbu" path="res://Scenes/instruction_screen.tscn" id="19_76u2l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hw5p4"]
-size = Vector2(32, 31)
+size = Vector2(41, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mm4x4"]
-size = Vector2(45, 34)
+size = Vector2(57, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lrayr"]
-size = Vector2(31, 30)
+size = Vector2(43, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ha4it"]
 size = Vector2(53, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpsen"]
 size = Vector2(159, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5i0a8"]
+atlas = ExtResource("16_y2ndu")
+region = Rect2(0, 0, 500, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5ovh"]
+atlas = ExtResource("16_y2ndu")
+region = Rect2(500, 0, 500, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uxr4"]
+atlas = ExtResource("16_y2ndu")
+region = Rect2(1000, 0, 500, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucd2h"]
+atlas = ExtResource("16_y2ndu")
+region = Rect2(1500, 0, 500, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40bkn"]
+atlas = ExtResource("16_y2ndu")
+region = Rect2(2000, 0, 500, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc2h5"]
+atlas = ExtResource("16_y2ndu")
+region = Rect2(2500, 0, 500, 281)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ytm4c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5i0a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5ovh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7uxr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucd2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40bkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xc2h5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
 
 [node name="World" type="Node2D"]
 position = Vector2(-4, -5)
@@ -64,7 +116,7 @@ collision_layer = 2
 [node name="RedBinArea" type="Area2D" parent="BinsItems/RedBin"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BinsItems/RedBin/RedBinArea"]
-position = Vector2(0, 28.5)
+position = Vector2(-4.5, 28.5)
 shape = SubResource("RectangleShape2D_hw5p4")
 
 [node name="BlueBin" parent="BinsItems" instance=ExtResource("7_yb7m1")]
@@ -74,7 +126,7 @@ collision_layer = 2
 [node name="BlueBinArea" type="Area2D" parent="BinsItems/BlueBin"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BinsItems/BlueBin/BlueBinArea"]
-position = Vector2(-1.5, 30)
+position = Vector2(-2.5, 30)
 shape = SubResource("RectangleShape2D_mm4x4")
 
 [node name="GreenBin" parent="BinsItems" instance=ExtResource("9_t4mds")]
@@ -84,7 +136,7 @@ collision_layer = 2
 [node name="GreenBinArea" type="Area2D" parent="BinsItems/GreenBin"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BinsItems/GreenBin/GreenBinArea"]
-position = Vector2(-0.5, 25)
+position = Vector2(5.5, 25)
 shape = SubResource("RectangleShape2D_lrayr")
 
 [node name="ConveyorEnd" type="Area2D" parent="BinsItems"]
@@ -136,24 +188,43 @@ position = Vector2(256, 121)
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="UI" parent="." instance=ExtResource("14_ti7pd")]
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="UI" instance=ExtResource("14_ti7pd")]
 script = ExtResource("15_dbdx3")
 
-[node name="CoinRewardTimer" type="Timer" parent="UI"]
+[node name="CoinRewardTimer" type="Timer" parent="UI/GameUI"]
 one_shot = true
 
-[node name="Instructions" type="Node2D" parent="UI"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/GameUI"]
+
+[node name="StrikeIndicator" type="AnimatedSprite2D" parent="UI/GameUI"]
 visible = false
-position = Vector2(49, 77)
+position = Vector2(250, 140)
+sprite_frames = SubResource("SpriteFrames_ytm4c")
+frame = 5
+frame_progress = 1.0
 
-[node name="HintTextBox" parent="UI/Instructions" instance=ExtResource("16_co87t")]
-position = Vector2(0, 79)
+[node name="PauseMenu" parent="UI" instance=ExtResource("18_3rr14")]
+visible = false
+offset_left = -4.0
+offset_top = -5.0
+offset_right = -4.0
+offset_bottom = -5.0
 
-[node name="InstructionsTextBox" parent="UI/Instructions" instance=ExtResource("17_4gbpb")]
-position = Vector2(-38, -77)
+[node name="InstructionScreen" parent="UI" instance=ExtResource("19_76u2l")]
+visible = false
 
-[connection signal="correct_sort" from="BinsItems" to="UI" method="_on_bins_items_correct_sort"]
-[connection signal="strike_added" from="BinsItems" to="UI" method="_on_bins_items_strike_added"]
+[node name="PauseBtn" type="TextureButton" parent="UI"]
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 47.0
+offset_bottom = 48.0
+texture_normal = ExtResource("18_77d1s")
+
+[connection signal="correct_sort" from="BinsItems" to="UI/GameUI" method="_on_bins_items_correct_sort"]
+[connection signal="incorrect_sort" from="BinsItems" to="UI/GameUI" method="_on_bins_items_incorrect_sort"]
+[connection signal="strike_added" from="BinsItems" to="UI/GameUI" method="_on_bins_items_strike_added"]
 [connection signal="timeout" from="BinsItems/ItemSpawnTimer" to="BinsItems" method="_on_item_spawn_timer_timeout"]
 [connection signal="body_entered" from="BinsItems/RedBin/RedBinArea" to="BinsItems" method="_on_red_bin_area_body_entered"]
 [connection signal="body_exited" from="BinsItems/RedBin/RedBinArea" to="BinsItems" method="_on_red_bin_area_body_exited"]
@@ -166,4 +237,6 @@ position = Vector2(-38, -77)
 [connection signal="body_exited" from="Conveyor/ConveyorLeftArea" to="." method="_on_conveyor_left_area_body_exited"]
 [connection signal="body_entered" from="ConveyorRight/ConveyorRightArea" to="." method="_on_conveyor_right_area_body_entered"]
 [connection signal="body_exited" from="ConveyorRight/ConveyorRightArea" to="." method="_on_conveyor_right_area_body_exited"]
-[connection signal="timeout" from="UI/CoinRewardTimer" to="UI" method="_on_coin_reward_timer_timeout"]
+[connection signal="timeout" from="UI/GameUI/CoinRewardTimer" to="UI/GameUI" method="_on_coin_reward_timer_timeout"]
+[connection signal="animation_finished" from="UI/GameUI/StrikeIndicator" to="UI/GameUI" method="_on_strike_indicator_animation_finished"]
+[connection signal="pressed" from="UI/PauseBtn" to="UI/PauseMenu" method="_on_pause_btn_pressed"]

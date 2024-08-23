@@ -1,12 +1,6 @@
 extends Node
 
-var player_pos = "hello"
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+# global variables
+var player_pos: Vector2
+var strikes: int
+var practice_mode_on: bool
