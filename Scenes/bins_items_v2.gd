@@ -231,7 +231,7 @@ func _on_red_bin_area_body_exited(_body):
 # item gets removed
 func _on_conveyor_end_area_entered(area):
 	add_strike()
-	incorrect_sort.emit()
+	incorrect_sort.emit(null)
 	var parent = area.get_parent()
 	parent.queue_free()
 

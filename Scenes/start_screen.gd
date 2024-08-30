@@ -32,4 +32,4 @@ func _on_practice_mode_pressed():
 
 # when instruction button is pressed show intructions
 func _on_instructions_pressed():
-	$PauseMenuInstructions.visible = true
+	$InstructionScreenImprovement.visible = true

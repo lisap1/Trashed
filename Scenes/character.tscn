@@ -280,7 +280,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pdt50"]
 radius = 4.0
-height = 18.0
+height = 8.0
 
 [sub_resource type="Animation" id="Animation_k65tn"]
 length = 0.001

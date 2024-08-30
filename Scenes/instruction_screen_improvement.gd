@@ -11,3 +11,7 @@ func _on_back_pressed():
 
 func _on_context_frwd_pressed():
 	$PauseMenuInstructions.visible = true
+
+
+func _on_context_back_pressed():
+	visible = false

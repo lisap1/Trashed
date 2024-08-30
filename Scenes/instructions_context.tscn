@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://6x1fpirmbcr1"]
+[gd_scene load_steps=4 format=3 uid="uid://6x1fpirmbcr1"]
 
 [ext_resource type="Texture2D" uid="uid://cyjsnhfnpvhor" path="res://Final Assets/sky_start_screen_parallax.png" id="1_f4wqp"]
 [ext_resource type="Texture2D" uid="uid://v2gtdym68oph" path="res://Final Assets/tree_start_screen_parallax.png" id="2_64yk5"]
+[ext_resource type="FontFile" uid="uid://chk5gg5vi6bxa" path="res://PixelifySans-VariableFont_wght.ttf" id="3_l0p4q"]
 
 [node name="InstructionsContext" type="Control"]
 layout_mode = 3
@@ -12,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 501.0
 offset_bottom = 286.0
 color = Color(0.117647, 0.12549, 0.501961, 1)
@@ -23,3 +25,75 @@ texture = ExtResource("1_f4wqp")
 [node name="TreeStartScreenParallax" type="Sprite2D" parent="."]
 position = Vector2(253, 146)
 texture = ExtResource("2_64yk5")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 34.0
+offset_right = 413.0
+offset_bottom = 79.0
+theme_override_colors/font_color = Color(0.117647, 0, 0.658824, 1)
+theme_override_fonts/font = ExtResource("3_l0p4q")
+theme_override_font_sizes/font_size = 36
+text = "Help!"
+
+[node name="Title" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = -94.0
+offset_top = 58.0
+offset_right = 190.0
+offset_bottom = 103.0
+theme_override_colors/font_color = Color(0.117647, 0, 0.658824, 1)
+theme_override_fonts/font = ExtResource("3_l0p4q")
+theme_override_font_sizes/font_size = 13
+text = "Tamaki Makaurau has a big littering problem! "
+
+[node name="Title2" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = -66.0
+offset_top = 194.0
+offset_right = 146.0
+offset_bottom = 239.0
+theme_override_colors/font_color = Color(0.117647, 0, 0.658824, 1)
+theme_override_fonts/font = ExtResource("3_l0p4q")
+theme_override_font_sizes/font_size = 21
+text = "Good luck!"
+horizontal_alignment = 1
+
+[node name="Title2" type="Label" parent="."]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 122.0
+offset_right = 511.0
+offset_bottom = 167.0
+theme_override_colors/font_color = Color(0.117647, 0, 0.658824, 1)
+theme_override_fonts/font = ExtResource("3_l0p4q")
+theme_override_font_sizes/font_size = 13
+text = "Help make this city trash-free by sorting the trash 
+into the correct bins "
+horizontal_alignment = 1
+
+[node name="Title2" type="Label" parent="Title2"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 68.0
+offset_right = 519.0
+offset_bottom = 113.0
+theme_override_colors/font_color = Color(0.117647, 0, 0.658824, 1)
+theme_override_fonts/font = ExtResource("3_l0p4q")
+theme_override_font_sizes/font_size = 13
+text = "reach 75 items sorted to make Tamaki Makaurau 
+a clean city."
+horizontal_alignment = 1
+
+[node name="Title3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 14.0
+offset_right = 463.0
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(0.117647, 0, 0.658824, 1)
+theme_override_fonts/font = ExtResource("3_l0p4q")
+theme_override_font_sizes/font_size = 10
+text = "click here for  -->
+instructions"

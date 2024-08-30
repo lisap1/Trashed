@@ -62,7 +62,8 @@ func _on_coin_reward_timer_timeout():
 # on incorrect bin sort, show strike animation and bin highlight
 func _on_bins_items_incorrect_sort(bin):
 	strike_indicate()
-	show_correct_bin(bin)
+	if bin != null:
+		show_correct_bin(bin)
 
 
 # highlight the correct bin 

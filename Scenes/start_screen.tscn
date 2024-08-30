@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://t6dt57fgc4ty"]
+[gd_scene load_steps=14 format=3 uid="uid://disu8fl883quq"]
 
 [ext_resource type="Script" path="res://Scenes/start_screen.gd" id="1_yp4du"]
 [ext_resource type="Texture2D" uid="uid://fxgpp8tuw50k" path="res://Final Assets/instructions_unpressed.png" id="2_ff2em"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://v2gtdym68oph" path="res://Final Assets/tree_start_screen_parallax.png" id="6_duw1r"]
 [ext_resource type="Texture2D" uid="uid://b4h5500lomrgf" path="res://Final Assets/practice_mode_pressed.png" id="7_a6010"]
 [ext_resource type="FontFile" uid="uid://chk5gg5vi6bxa" path="res://PixelifySans-VariableFont_wght.ttf" id="11_k4s3n"]
-[ext_resource type="PackedScene" uid="uid://dsnc3357q2ww2" path="res://Scenes/pause_menu_instructions.tscn" id="13_7eqf8"]
+[ext_resource type="PackedScene" uid="uid://b6l0uebvjlu4v" path="res://Scenes/instruction_screen_improvement.tscn" id="13_ih622"]
 
 [node name="StartScreen" type="Node2D"]
 script = ExtResource("1_yp4du")
@@ -134,7 +134,7 @@ theme_override_fonts/font = ExtResource("11_k4s3n")
 theme_override_font_sizes/font_size = 11
 text = "---->"
 
-[node name="PauseMenuInstructions" parent="." instance=ExtResource("13_7eqf8")]
+[node name="InstructionScreenImprovement" parent="." instance=ExtResource("13_ih622")]
 visible = false
 
 [connection signal="pressed" from="Instructions" to="." method="_on_instructions_pressed"]
