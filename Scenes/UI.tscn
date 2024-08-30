@@ -44,11 +44,22 @@ position = Vector2(481.5, 27)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_k74el")
 
-[node name="CoinText" type="Label" parent="CoinDisplay"]
-offset_left = -26.3335
-offset_top = -9.0
-offset_right = -7.3335
-offset_bottom = 14.0
+[node name="OutOf75" type="Label" parent="CoinDisplay"]
+offset_left = -35.0
+offset_top = -9.33333
+offset_right = 5.00002
+offset_bottom = 13.6667
 theme_override_colors/font_color = Color(0, 0.235294, 0.972549, 1)
 theme_override_fonts/font = ExtResource("1_3tp0r")
+text = "/75
+"
+
+[node name="CoinText" type="Label" parent="CoinDisplay"]
+offset_left = -53.6668
+offset_top = -9.33333
+offset_right = -34.6668
+offset_bottom = 13.6667
+theme_override_colors/font_color = Color(0, 0.235294, 0.972549, 1)
+theme_override_fonts/font = ExtResource("1_3tp0r")
+text = "0"
 horizontal_alignment = 2

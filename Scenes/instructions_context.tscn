@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://6x1fpirmbcr1"]
+
+[ext_resource type="Texture2D" uid="uid://cyjsnhfnpvhor" path="res://Final Assets/sky_start_screen_parallax.png" id="1_f4wqp"]
+[ext_resource type="Texture2D" uid="uid://v2gtdym68oph" path="res://Final Assets/tree_start_screen_parallax.png" id="2_64yk5"]
+
+[node name="InstructionsContext" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 501.0
+offset_bottom = 286.0
+color = Color(0.117647, 0.12549, 0.501961, 1)
+
+[node name="SkyStartScreenParallax" type="Sprite2D" parent="."]
+position = Vector2(254, 142)
+texture = ExtResource("1_f4wqp")
+
+[node name="TreeStartScreenParallax" type="Sprite2D" parent="."]
+position = Vector2(253, 146)
+texture = ExtResource("2_64yk5")

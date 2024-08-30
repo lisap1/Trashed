@@ -1,0 +1,441 @@
+[gd_scene load_steps=17 format=3 uid="uid://d3xxdk8hf8sl3"]
+
+[ext_resource type="FontFile" uid="uid://chk5gg5vi6bxa" path="res://PixelifySans-VariableFont_wght.ttf" id="1_fefuu"]
+[ext_resource type="Texture2D" uid="uid://b8dc6lha0uo6b" path="res://Final Assets/items/apple_item.png" id="2_obeyp"]
+[ext_resource type="Texture2D" uid="uid://b5h2xarupvben" path="res://Final Assets/items/bread_item.png" id="3_hsuur"]
+[ext_resource type="Texture2D" uid="uid://dvramvm6cu5p5" path="res://Final Assets/items/cheese_item.png" id="4_j0153"]
+[ext_resource type="Texture2D" uid="uid://cqjdxqtqq3hyl" path="res://Final Assets/items/chicken_item.png" id="5_fxx2u"]
+[ext_resource type="Texture2D" uid="uid://brmmwittef76u" path="res://Final Assets/items/fish_item.png" id="6_5ocp4"]
+[ext_resource type="Texture2D" uid="uid://b0yy708u4ac61" path="res://Final Assets/items/can_item.png" id="7_s2t71"]
+[ext_resource type="Texture2D" uid="uid://b6qp5sa2t4jil" path="res://Final Assets/items/glass_bottle_item.png" id="8_fp3fg"]
+[ext_resource type="Texture2D" uid="uid://cspm66frntn1p" path="res://Final Assets/items/paper_item.png" id="9_crhkm"]
+[ext_resource type="Texture2D" uid="uid://dnyawxkxlf8bu" path="res://Final Assets/items/plastic_bottle_item.png" id="10_pfoxm"]
+[ext_resource type="Texture2D" uid="uid://rwmne7s1epps" path="res://Final Assets/items/cardboard_item.png" id="11_an14e"]
+[ext_resource type="Texture2D" uid="uid://bbvd1ioy5acnf" path="res://Final Assets/items/styrofoam_item.png" id="12_nbrji"]
+[ext_resource type="Texture2D" uid="uid://svaq0kgu0e6s" path="res://Final Assets/items/plastic bag_item.png" id="13_o8kva"]
+[ext_resource type="Texture2D" uid="uid://cteh13ciw84ak" path="res://Final Assets/items/broken_glass_item.png" id="14_meok6"]
+[ext_resource type="Texture2D" uid="uid://bc27wfgokonex" path="res://Final Assets/items/tissues_item.png" id="15_rxv0r"]
+[ext_resource type="Texture2D" uid="uid://c4lo22rsqkcwd" path="res://Final Assets/items/poo_bag_item.png" id="16_qre7l"]
+
+[node name="InstructionsItems" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 501.0
+offset_bottom = 286.0
+color = Color(0.117647, 0.12549, 0.501961, 1)
+
+[node name="FoodScraps" type="Label" parent="."]
+layout_mode = 2
+offset_left = 83.0
+offset_top = 12.0
+offset_right = 156.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 12
+text = "food scraps 
+"
+
+[node name="Apple" type="Label" parent="FoodScraps"]
+offset_left = 8.0
+offset_top = 34.0
+offset_right = 75.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 10
+text = "apple core
+"
+
+[node name="FoodScraps" type="Label" parent="FoodScraps/Apple"]
+offset_left = -14.0
+offset_top = 13.0
+offset_right = 92.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 8
+text = "fruits & vegetables
+"
+
+[node name="AppleItem" type="Sprite2D" parent="FoodScraps/Apple"]
+position = Vector2(22.5, 34.2143)
+scale = Vector2(1.35714, 1.35714)
+texture = ExtResource("2_obeyp")
+
+[node name="Bread" type="Label" parent="FoodScraps"]
+offset_left = -3.0
+offset_top = 81.0
+offset_right = 64.0
+offset_bottom = 96.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 10
+text = "bread"
+horizontal_alignment = 1
+
+[node name="FoodScraps" type="Label" parent="FoodScraps/Bread"]
+offset_left = -18.0
+offset_top = 13.0
+offset_right = 88.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 8
+text = "baked goods"
+horizontal_alignment = 1
+
+[node name="BreadItem" type="Sprite2D" parent="FoodScraps/Bread"]
+position = Vector2(34.25, 35.75)
+scale = Vector2(1.16667, 1.16667)
+texture = ExtResource("3_hsuur")
+
+[node name="Cheese" type="Label" parent="FoodScraps"]
+offset_left = -2.0
+offset_top = 128.0
+offset_right = 65.0
+offset_bottom = 143.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 10
+text = "cheese"
+horizontal_alignment = 1
+
+[node name="FoodScraps" type="Label" parent="FoodScraps/Cheese"]
+offset_left = -18.0
+offset_top = 13.0
+offset_right = 88.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 8
+text = "dairy products"
+horizontal_alignment = 1
+
+[node name="CheeseItem" type="Sprite2D" parent="FoodScraps/Cheese"]
+position = Vector2(33.0833, 33.75)
+scale = Vector2(1.20833, 1.20833)
+texture = ExtResource("4_j0153")
+
+[node name="Chicken" type="Label" parent="FoodScraps"]
+offset_left = -1.0
+offset_top = 171.0
+offset_right = 66.0
+offset_bottom = 186.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 10
+text = "chicken"
+horizontal_alignment = 1
+
+[node name="FoodScraps" type="Label" parent="FoodScraps/Chicken"]
+offset_left = -18.0
+offset_top = 13.0
+offset_right = 88.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 8
+text = "meat products"
+horizontal_alignment = 1
+
+[node name="ChickenItem" type="Sprite2D" parent="FoodScraps/Chicken"]
+position = Vector2(30.25, 37.25)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("5_fxx2u")
+
+[node name="Fish" type="Label" parent="FoodScraps"]
+offset_left = -5.0
+offset_top = 221.0
+offset_right = 62.0
+offset_bottom = 236.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 10
+text = "fish bones"
+horizontal_alignment = 1
+
+[node name="FoodScraps" type="Label" parent="FoodScraps/Fish"]
+offset_left = -18.0
+offset_top = 13.0
+offset_right = 88.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 8
+text = "bones and meat excess"
+horizontal_alignment = 1
+
+[node name="FishItem" type="Sprite2D" parent="FoodScraps/Fish"]
+position = Vector2(34.5962, 33.25)
+scale = Vector2(1.42308, 1.42308)
+texture = ExtResource("6_5ocp4")
+
+[node name="FoodScraps2" type="Label" parent="."]
+offset_left = 199.0
+offset_top = 12.0
+offset_right = 285.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 12
+text = "general waste
+"
+horizontal_alignment = 1
+
+[node name="Apple" type="Label" parent="FoodScraps2"]
+offset_left = 2.0
+offset_top = 34.0
+offset_right = 69.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 10
+text = "can
+"
+horizontal_alignment = 1
+
+[node name="FoodScraps" type="Label" parent="FoodScraps2/Apple"]
+offset_left = -9.0
+offset_top = 13.0
+offset_right = 75.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 8
+text = "aluminium
+"
+horizontal_alignment = 1
+
+[node name="AppleItem" type="Sprite2D" parent="FoodScraps2/Apple"]
+position = Vector2(30.5, 34.2143)
+scale = Vector2(1.35714, 1.35714)
+texture = ExtResource("7_s2t71")
+
+[node name="Bread" type="Label" parent="FoodScraps2"]
+offset_left = 2.0
+offset_top = 81.0
+offset_right = 69.0
+offset_bottom = 96.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 10
+text = "glass bottle"
+horizontal_alignment = 1
+
+[node name="FoodScraps" type="Label" parent="FoodScraps2/Bread"]
+offset_left = -18.0
+offset_top = 13.0
+offset_right = 88.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 8
+text = "glass products"
+horizontal_alignment = 1
+
+[node name="BreadItem" type="Sprite2D" parent="FoodScraps2/Bread"]
+position = Vector2(34.25, 35.75)
+scale = Vector2(1.16667, 1.16667)
+texture = ExtResource("8_fp3fg")
+
+[node name="Cheese" type="Label" parent="FoodScraps2"]
+offset_left = 3.0
+offset_top = 128.0
+offset_right = 70.0
+offset_bottom = 143.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 10
+text = "paper"
+horizontal_alignment = 1
+
+[node name="FoodScraps" type="Label" parent="FoodScraps2/Cheese"]
+offset_left = -18.0
+offset_top = 13.0
+offset_right = 88.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 8
+text = "paper, with staples removed"
+horizontal_alignment = 1
+
+[node name="CheeseItem" type="Sprite2D" parent="FoodScraps2/Cheese"]
+position = Vector2(33.0833, 33.75)
+scale = Vector2(1.20833, 1.20833)
+texture = ExtResource("9_crhkm")
+
+[node name="Chicken" type="Label" parent="FoodScraps2"]
+offset_left = 4.0
+offset_top = 171.0
+offset_right = 73.0
+offset_bottom = 186.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 10
+text = "plastic bottle"
+horizontal_alignment = 1
+
+[node name="FoodScraps" type="Label" parent="FoodScraps2/Chicken"]
+offset_left = -18.0
+offset_top = 13.0
+offset_right = 88.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 8
+text = "any plastic labelled 1, 2 or 5"
+horizontal_alignment = 1
+
+[node name="ChickenItem" type="Sprite2D" parent="FoodScraps2/Chicken"]
+position = Vector2(30.225, 36.2)
+scale = Vector2(1.12917, 1.12917)
+texture = ExtResource("10_pfoxm")
+
+[node name="Fish" type="Label" parent="FoodScraps2"]
+offset_top = 221.0
+offset_right = 67.0
+offset_bottom = 236.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 10
+text = "cardboard"
+horizontal_alignment = 1
+
+[node name="FoodScraps" type="Label" parent="FoodScraps2/Fish"]
+offset_left = -30.0
+offset_top = 13.0
+offset_right = 111.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 8
+text = "all cardboard with tape removed"
+horizontal_alignment = 1
+
+[node name="FishItem" type="Sprite2D" parent="FoodScraps2/Fish"]
+position = Vector2(34.5961, 35.25)
+scale = Vector2(1.42308, 1.42308)
+texture = ExtResource("11_an14e")
+
+[node name="FoodScraps3" type="Label" parent="."]
+offset_left = 325.0
+offset_top = 12.0
+offset_right = 405.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 12
+text = "recycling
+"
+horizontal_alignment = 1
+
+[node name="Apple" type="Label" parent="FoodScraps3"]
+offset_left = 2.0
+offset_top = 31.0
+offset_right = 69.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 10
+text = "styrofoam
+"
+horizontal_alignment = 1
+
+[node name="FoodScraps" type="Label" parent="FoodScraps3/Apple"]
+offset_left = -19.0
+offset_top = 13.0
+offset_right = 94.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 8
+text = "from takeaway or packaging
+"
+horizontal_alignment = 1
+
+[node name="AppleItem" type="Sprite2D" parent="FoodScraps3/Apple"]
+position = Vector2(32.5, 34.2143)
+scale = Vector2(1.35714, 1.35714)
+texture = ExtResource("12_nbrji")
+
+[node name="Bread" type="Label" parent="FoodScraps3"]
+offset_left = 2.0
+offset_top = 78.0
+offset_right = 69.0
+offset_bottom = 93.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 10
+text = "plastic bag"
+horizontal_alignment = 1
+
+[node name="FoodScraps" type="Label" parent="FoodScraps3/Bread"]
+offset_left = -18.0
+offset_top = 13.0
+offset_right = 88.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 8
+text = "or in soft plastic recycling"
+horizontal_alignment = 1
+
+[node name="BreadItem" type="Sprite2D" parent="FoodScraps3/Bread"]
+position = Vector2(34.25, 35.75)
+scale = Vector2(1.16667, 1.16667)
+texture = ExtResource("13_o8kva")
+
+[node name="Cheese" type="Label" parent="FoodScraps3"]
+offset_left = 3.0
+offset_top = 127.0
+offset_right = 70.0
+offset_bottom = 142.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 10
+text = "broken glass"
+horizontal_alignment = 1
+
+[node name="FoodScraps" type="Label" parent="FoodScraps3/Cheese"]
+offset_left = -18.0
+offset_top = 13.0
+offset_right = 88.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 8
+text = "not safe for recycling!"
+horizontal_alignment = 1
+
+[node name="CheeseItem" type="Sprite2D" parent="FoodScraps3/Cheese"]
+position = Vector2(33.0833, 33.75)
+scale = Vector2(1.20833, 1.20833)
+texture = ExtResource("14_meok6")
+
+[node name="Chicken" type="Label" parent="FoodScraps3"]
+offset_left = 6.0
+offset_top = 224.0
+offset_right = 75.0
+offset_bottom = 239.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 10
+text = "used tissues"
+horizontal_alignment = 1
+
+[node name="FoodScraps" type="Label" parent="FoodScraps3/Chicken"]
+offset_left = -18.0
+offset_top = 13.0
+offset_right = 88.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+
+[node name="ChickenItem" type="Sprite2D" parent="FoodScraps3/Chicken"]
+position = Vector2(32.9699, 29.4302)
+scale = Vector2(1.47227, 1.47227)
+texture = ExtResource("15_rxv0r")
+
+[node name="Fish" type="Label" parent="FoodScraps3"]
+offset_left = 6.0
+offset_top = 173.0
+offset_right = 73.0
+offset_bottom = 188.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 10
+text = "poo bag"
+horizontal_alignment = 1
+
+[node name="FoodScraps" type="Label" parent="FoodScraps3/Fish"]
+offset_left = -30.0
+offset_top = 13.0
+offset_right = 111.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("1_fefuu")
+theme_override_font_sizes/font_size = 8
+text = "dog poop shouldn't be composted"
+horizontal_alignment = 1
+
+[node name="FishItem" type="Sprite2D" parent="FoodScraps3/Fish"]
+position = Vector2(34.5961, 35.25)
+scale = Vector2(1.42308, 1.42308)
+texture = ExtResource("16_qre7l")

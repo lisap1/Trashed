@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cplqn645tjfya"]
+[gd_scene load_steps=35 format=3 uid="uid://cplqn645tjfya"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_sb1oc"]
 [ext_resource type="PackedScene" uid="uid://bjulqsojtshps" path="res://Scenes/objects/ground.tscn" id="2_4icbo"]
@@ -8,17 +8,20 @@
 [ext_resource type="PackedScene" uid="uid://dkiintp78mnb1" path="res://Scenes/objects/conveyor.tscn" id="5_2akyw"]
 [ext_resource type="Script" path="res://Scenes/bins_items_v2.gd" id="5_pmeok"]
 [ext_resource type="PackedScene" uid="uid://dls75v3ku2u3k" path="res://Scenes/objects/big_bin.tscn" id="6_h5ydq"]
+[ext_resource type="Texture2D" uid="uid://bxn0sgy6ns8kl" path="res://Final Assets/red_bin_highlight.png" id="7_bfn7o"]
 [ext_resource type="PackedScene" uid="uid://03v4i72cvh4k" path="res://Scenes/objects/blue_bin.tscn" id="7_yb7m1"]
 [ext_resource type="PackedScene" uid="uid://dqce2jekrfp0y" path="res://Scenes/objects/red_bin.tscn" id="8_0fkh7"]
+[ext_resource type="Texture2D" uid="uid://drbv38dra551v" path="res://Final Assets/blue_bin_highlight.png" id="9_fce7u"]
 [ext_resource type="PackedScene" uid="uid://b02pkwyxty4yj" path="res://Scenes/objects/conveyor_right.tscn" id="9_sd75t"]
 [ext_resource type="PackedScene" uid="uid://b26dr3y2fcg47" path="res://Scenes/objects/green_bin.tscn" id="9_t4mds"]
 [ext_resource type="PackedScene" uid="uid://wmybedbgr2y6" path="res://Scenes/objects/big_bin_right.tscn" id="10_gxw7w"]
+[ext_resource type="Texture2D" uid="uid://b6wisru0tagta" path="res://Final Assets/green_bin_highlight.png" id="11_533xu"]
 [ext_resource type="PackedScene" uid="uid://cokwtsrpk0d4m" path="res://Scenes/UI.tscn" id="14_ti7pd"]
 [ext_resource type="Script" path="res://Scenes/UI.gd" id="15_dbdx3"]
 [ext_resource type="Texture2D" uid="uid://bfsbtl5r7hlby" path="res://Final Assets/strike_indicator.png" id="16_y2ndu"]
 [ext_resource type="PackedScene" uid="uid://dr6ldhbga0xfx" path="res://Scenes/pause_menu.tscn" id="18_3rr14"]
 [ext_resource type="Texture2D" uid="uid://cv5cq27ur603m" path="res://Final Assets/pause_button.png" id="18_77d1s"]
-[ext_resource type="PackedScene" uid="uid://cai3gsvgcxmbu" path="res://Scenes/instruction_screen.tscn" id="19_76u2l"]
+[ext_resource type="PackedScene" uid="uid://cai3gsvgcxmbu" path="res://Scenes/instruction_screen.tscn" id="22_xhe7y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hw5p4"]
 size = Vector2(41, 31)
@@ -89,6 +92,10 @@ animations = [{
 position = Vector2(-4, -5)
 script = ExtResource("1_sb1oc")
 
+[node name="GameOverTimer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="Ground" parent="Objects" instance=ExtResource("2_4icbo")]
@@ -119,6 +126,11 @@ collision_layer = 2
 position = Vector2(-4.5, 28.5)
 shape = SubResource("RectangleShape2D_hw5p4")
 
+[node name="RedBinHighlight" type="Sprite2D" parent="BinsItems"]
+visible = false
+position = Vector2(196, 97)
+texture = ExtResource("7_bfn7o")
+
 [node name="BlueBin" parent="BinsItems" instance=ExtResource("7_yb7m1")]
 position = Vector2(253, 95)
 collision_layer = 2
@@ -129,6 +141,12 @@ collision_layer = 2
 position = Vector2(-2.5, 30)
 shape = SubResource("RectangleShape2D_mm4x4")
 
+[node name="BlueBinHighlight" type="Sprite2D" parent="BinsItems/BlueBin"]
+visible = false
+position = Vector2(-1, -7)
+texture = ExtResource("9_fce7u")
+offset = Vector2(0.5, 0)
+
 [node name="GreenBin" parent="BinsItems" instance=ExtResource("9_t4mds")]
 position = Vector2(305, 100)
 collision_layer = 2
@@ -138,6 +156,11 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BinsItems/GreenBin/GreenBinArea"]
 position = Vector2(5.5, 25)
 shape = SubResource("RectangleShape2D_lrayr")
+
+[node name="GreenBinHighlight" type="Sprite2D" parent="BinsItems"]
+visible = false
+position = Vector2(305, 100)
+texture = ExtResource("11_533xu")
 
 [node name="ConveyorEnd" type="Area2D" parent="BinsItems"]
 collision_layer = 8
@@ -193,6 +216,10 @@ position = Vector2(256, 121)
 [node name="GameUI" parent="UI" instance=ExtResource("14_ti7pd")]
 script = ExtResource("15_dbdx3")
 
+[node name="BinHighlightTimer" type="Timer" parent="UI/GameUI"]
+wait_time = 0.5
+one_shot = true
+
 [node name="CoinRewardTimer" type="Timer" parent="UI/GameUI"]
 one_shot = true
 
@@ -212,9 +239,6 @@ offset_top = -5.0
 offset_right = -4.0
 offset_bottom = -5.0
 
-[node name="InstructionScreen" parent="UI" instance=ExtResource("19_76u2l")]
-visible = false
-
 [node name="PauseBtn" type="TextureButton" parent="UI"]
 offset_left = 7.0
 offset_top = 8.0
@@ -222,6 +246,14 @@ offset_right = 47.0
 offset_bottom = 48.0
 texture_normal = ExtResource("18_77d1s")
 
+[node name="InstructionScreen" parent="UI" instance=ExtResource("22_xhe7y")]
+visible = false
+offset_left = -2.0
+offset_top = -8.0
+offset_right = -2.0
+offset_bottom = -8.0
+
+[connection signal="timeout" from="GameOverTimer" to="BinsItems" method="_on_game_over_timer_timeout"]
 [connection signal="correct_sort" from="BinsItems" to="UI/GameUI" method="_on_bins_items_correct_sort"]
 [connection signal="incorrect_sort" from="BinsItems" to="UI/GameUI" method="_on_bins_items_incorrect_sort"]
 [connection signal="strike_added" from="BinsItems" to="UI/GameUI" method="_on_bins_items_strike_added"]
@@ -237,6 +269,7 @@ texture_normal = ExtResource("18_77d1s")
 [connection signal="body_exited" from="Conveyor/ConveyorLeftArea" to="." method="_on_conveyor_left_area_body_exited"]
 [connection signal="body_entered" from="ConveyorRight/ConveyorRightArea" to="." method="_on_conveyor_right_area_body_entered"]
 [connection signal="body_exited" from="ConveyorRight/ConveyorRightArea" to="." method="_on_conveyor_right_area_body_exited"]
+[connection signal="timeout" from="UI/GameUI/BinHighlightTimer" to="UI/GameUI" method="_on_bin_highlight_timer_timeout"]
 [connection signal="timeout" from="UI/GameUI/CoinRewardTimer" to="UI/GameUI" method="_on_coin_reward_timer_timeout"]
 [connection signal="animation_finished" from="UI/GameUI/StrikeIndicator" to="UI/GameUI" method="_on_strike_indicator_animation_finished"]
 [connection signal="pressed" from="UI/PauseBtn" to="UI/PauseMenu" method="_on_pause_btn_pressed"]

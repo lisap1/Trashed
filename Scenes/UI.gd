@@ -6,7 +6,16 @@ var UI_strikes = [$HBox/Strike1/EmptyStrike, $HBox/Strike2/EmptyStrike, $HBox/St
 var coin_reward_queue = []
 var num_coins: int = 0
 var coin_addition: int = 1
+var bin_highlight = ""
 @onready var strike_indicator = $StrikeIndicator
+
+
+# if in practice mode, strikes won't be visible
+func _ready():
+	if GlobalVars.practice_mode_on == true:
+		$"./HBox".visible = false
+		$"./CoinDisplay".visible = false
+
 
 # add red strike to the UI
 func _on_bins_items_strike_added():
@@ -43,23 +52,42 @@ func _on_bins_items_correct_sort(bin):
 		if GlobalVars.practice_mode_on != true:
 			get_tree().change_scene_to_file("res://Scenes/win_screen.tscn")
 
+
 # after a certain amount of time, remove the coin reward sprite
 func _on_coin_reward_timer_timeout():
 	coin_reward_queue[0].queue_free()
 	coin_reward_queue.remove_at(0)
 	
-	
-func _on_bins_items_incorrect_sort():
-	strike_indicate()
-	
 
+# on incorrect bin sort, show strike animation and bin highlight
+func _on_bins_items_incorrect_sort(bin):
+	strike_indicate()
+	show_correct_bin(bin)
+
+
+# highlight the correct bin 
+func show_correct_bin(bin):
+	if bin == "food scraps":
+		bin_highlight = $"../../BinsItems/GreenBinHighlight"
+	if bin == "general waste":
+		bin_highlight = $"../../BinsItems/RedBinHighlight"
+	if bin == "recycling":
+		bin_highlight = $"../../BinsItems/BlueBin/BlueBinHighlight"
+	bin_highlight.visible = true
+	$BinHighlightTimer.start()
+
+
+# hide bin highlight on timeout
+func _on_bin_highlight_timer_timeout():
+	bin_highlight.visible = false
+	
+	
+# show strike border animation
 func strike_indicate():
 	strike_indicator.visible = true
 	strike_indicator.play()
 	
 
+# hide strike animation after finished
 func _on_strike_indicator_animation_finished():
 	strike_indicator.visible = false
-
-
-

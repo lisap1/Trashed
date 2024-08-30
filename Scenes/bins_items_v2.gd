@@ -97,7 +97,7 @@ func _input(event):
 					else: 
 						# if incorrect adds a strike
 						add_strike()
-						incorrect_sort.emit()
+						incorrect_sort.emit(child.bin)
 					# after sorting, item is removed from the scene
 					child.queue_free()
 					item_held = false
@@ -127,10 +127,11 @@ func _process(delta):
 				if child.interacted == true:
 					child.position = GlobalVars.player_pos		
 					
-	# change to game over screen when strikes = 3
+	# start game over timer when strikes = 3
 	if GlobalVars.strikes >= strike_limit:
 		GlobalVars.strikes = 0
-		get_tree().change_scene_to_file("res://Scenes/game_over_screen.tscn")
+		$"../GameOverTimer".start()
+
 		
 	# conveyor speed 
 	var progressing_time = -0.04 * items_sorted + 4.2
@@ -142,6 +143,11 @@ func _process(delta):
 		$ItemSpawnTimer.set_wait_time(max_time) 
 
 
+# when timer runs out, change scene to game over 
+func _on_game_over_timer_timeout():
+	get_tree().change_scene_to_file("res://Scenes/game_over_screen.tscn")
+	
+	
 # check an objects type 
 func check_children_type(parent, type): 
 	for child in parent.get_children():
@@ -174,8 +180,9 @@ func choose_conveyor(right_conveyor, left_conveyor, left_list, right_list):
 
 
 func add_strike():
-	GlobalVars.strikes += 1
-	strike_added.emit()
+	if GlobalVars.practice_mode_on == false:
+		GlobalVars.strikes += 1
+		strike_added.emit()
 		
 		
 # when player enters an item area
@@ -282,3 +289,4 @@ func _on_item_spawn_timer_timeout():
 	# connecting signals for when player enters and exits item area
 	item_area.body_entered.connect(func(_body): area_entered(item_spawn))
 	item_area.body_exited.connect(func(_body): area_exited(item_spawn))
+

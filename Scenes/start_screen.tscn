@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://t6dt57fgc4ty"]
+[gd_scene load_steps=14 format=3 uid="uid://t6dt57fgc4ty"]
 
 [ext_resource type="Script" path="res://Scenes/start_screen.gd" id="1_yp4du"]
+[ext_resource type="Texture2D" uid="uid://fxgpp8tuw50k" path="res://Final Assets/instructions_unpressed.png" id="2_ff2em"]
 [ext_resource type="Texture2D" uid="uid://b5gq0ebeaivjh" path="res://Final Assets/play_button_unpressed.png" id="2_raqgp"]
 [ext_resource type="Texture2D" uid="uid://bqpjau0g02jl8" path="res://Final Assets/play_button_pressed.png" id="3_3pouq"]
+[ext_resource type="Texture2D" uid="uid://cy5nb883l3v0v" path="res://Final Assets/instructions_pressed.png" id="3_mjst6"]
 [ext_resource type="Texture2D" uid="uid://cu6y041s6nvtc" path="res://Final Assets/quit_button_unpressed.png" id="4_v1b2d"]
 [ext_resource type="Texture2D" uid="uid://cyjsnhfnpvhor" path="res://Final Assets/sky_start_screen_parallax.png" id="5_2py4f"]
 [ext_resource type="Texture2D" uid="uid://bif1ly2a0bf00" path="res://Final Assets/quit_button_pressed.png" id="5_btrao"]
@@ -10,31 +12,40 @@
 [ext_resource type="Texture2D" uid="uid://v2gtdym68oph" path="res://Final Assets/tree_start_screen_parallax.png" id="6_duw1r"]
 [ext_resource type="Texture2D" uid="uid://b4h5500lomrgf" path="res://Final Assets/practice_mode_pressed.png" id="7_a6010"]
 [ext_resource type="FontFile" uid="uid://chk5gg5vi6bxa" path="res://PixelifySans-VariableFont_wght.ttf" id="11_k4s3n"]
+[ext_resource type="PackedScene" uid="uid://dsnc3357q2ww2" path="res://Scenes/pause_menu_instructions.tscn" id="13_7eqf8"]
 
 [node name="StartScreen" type="Node2D"]
 script = ExtResource("1_yp4du")
+
+[node name="Instructions" type="TextureButton" parent="."]
+offset_left = 172.0
+offset_top = 145.0
+offset_right = 322.0
+offset_bottom = 177.0
+texture_normal = ExtResource("2_ff2em")
+texture_pressed = ExtResource("3_mjst6")
 
 [node name="Play" type="TextureButton" parent="."]
 offset_left = 172.0
 offset_top = 104.0
 offset_right = 322.0
-offset_bottom = 142.0
+offset_bottom = 136.0
 texture_normal = ExtResource("2_raqgp")
 texture_pressed = ExtResource("3_3pouq")
 
 [node name="Quit" type="TextureButton" parent="."]
 offset_left = 172.0
-offset_top = 192.0
+offset_top = 228.0
 offset_right = 322.0
-offset_bottom = 271.0
+offset_bottom = 260.0
 texture_normal = ExtResource("4_v1b2d")
 texture_pressed = ExtResource("5_btrao")
 
 [node name="PracticeMode" type="TextureButton" parent="."]
 offset_left = 172.0
-offset_top = 147.0
+offset_top = 187.0
 offset_right = 322.0
-offset_bottom = 187.0
+offset_bottom = 219.0
 texture_normal = ExtResource("6_6mnvl")
 texture_pressed = ExtResource("7_a6010")
 
@@ -67,6 +78,28 @@ theme_override_fonts/font = ExtResource("11_k4s3n")
 theme_override_font_sizes/font_size = 36
 text = "Sort It Out!"
 
+[node name="Welcome" type="Label" parent="."]
+offset_left = 12.0
+offset_top = 108.0
+offset_right = 182.0
+offset_bottom = 133.0
+rotation = -0.267523
+theme_override_colors/font_color = Color(0.116766, 3.91784e-05, 0.657251, 1)
+theme_override_fonts/font = ExtResource("11_k4s3n")
+theme_override_font_sizes/font_size = 20
+text = "Welcome"
+
+[node name="PlayerName" type="Label" parent="Welcome"]
+layout_mode = 0
+offset_left = 85.4274
+offset_top = -1.47016
+offset_right = 255.428
+offset_bottom = 23.5299
+rotation = -0.00347227
+theme_override_colors/font_color = Color(0.116766, 3.91784e-05, 0.657251, 1)
+theme_override_fonts/font = ExtResource("11_k4s3n")
+theme_override_font_sizes/font_size = 20
+
 [node name="TamakiMakaurau" type="Label" parent="."]
 offset_left = 249.0
 offset_top = 61.0
@@ -77,28 +110,34 @@ theme_override_fonts/font = ExtResource("11_k4s3n")
 theme_override_font_sizes/font_size = 20
 text = "Tāmaki Makaurau"
 
-[node name="NewToGame" type="Label" parent="."]
-offset_left = 46.0
-offset_top = 152.0
-offset_right = 186.0
-offset_bottom = 203.0
-theme_override_colors/font_color = Color(0.117647, 0, 0.658824, 1)
+[node name="TamakiMakaurau2" type="Label" parent="."]
+offset_left = 34.0
+offset_top = 166.0
+offset_right = 151.0
+offset_bottom = 235.0
+theme_override_colors/font_color = Color(0.116766, 3.91784e-05, 0.657251, 1)
 theme_override_fonts/font = ExtResource("11_k4s3n")
 theme_override_font_sizes/font_size = 11
-text = "New to Sort It 
-Out? Try practice 
-mode!"
+text = "New to Sort It Out?
+Try practice mode to 
+learn about the 
+different items!"
 
-[node name="Arrow" type="Label" parent="."]
-offset_left = 137.0
-offset_top = 155.0
-offset_right = 277.0
-offset_bottom = 206.0
-theme_override_colors/font_color = Color(0.117647, 0, 0.658824, 1)
+[node name="TamakiMakaurau2" type="Label" parent="TamakiMakaurau2"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 29.0
+offset_right = 141.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0.116766, 3.91784e-05, 0.657251, 1)
 theme_override_fonts/font = ExtResource("11_k4s3n")
 theme_override_font_sizes/font_size = 11
-text = "------>"
+text = "---->"
 
+[node name="PauseMenuInstructions" parent="." instance=ExtResource("13_7eqf8")]
+visible = false
+
+[connection signal="pressed" from="Instructions" to="." method="_on_instructions_pressed"]
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="PracticeMode" to="." method="_on_practice_mode_pressed"]

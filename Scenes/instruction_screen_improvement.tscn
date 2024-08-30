@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6l0uebvjlu4v"]
+
+[ext_resource type="PackedScene" uid="uid://dsnc3357q2ww2" path="res://Scenes/pause_menu_instructions.tscn" id="1_b1mul"]
+[ext_resource type="Script" path="res://Scenes/instruction_screen_improvement.gd" id="1_slh8y"]
+[ext_resource type="PackedScene" uid="uid://6x1fpirmbcr1" path="res://Scenes/instructions_context.tscn" id="2_umpwg"]
+[ext_resource type="Texture2D" uid="uid://bpgtbk03nq30g" path="res://Final Assets/back_arrow.png" id="3_yroab"]
+[ext_resource type="PackedScene" uid="uid://d3xxdk8hf8sl3" path="res://Scenes/instructions_items.tscn" id="4_3yx38"]
+
+[node name="InstructionScreenImprovement" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_slh8y")
+
+[node name="InstructionsContext" parent="." instance=ExtResource("2_umpwg")]
+layout_mode = 1
+offset_left = -3.0
+offset_right = -3.0
+
+[node name="ContextFrwd" type="TextureButton" parent="InstructionsContext"]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 15.0
+offset_right = 489.0
+offset_bottom = 36.0
+texture_normal = ExtResource("3_yroab")
+flip_h = true
+
+[node name="ContextBack" type="TextureButton" parent="InstructionsContext"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 13.0
+offset_right = 39.0
+offset_bottom = 34.0
+texture_normal = ExtResource("3_yroab")
+
+[node name="PauseMenuInstructions" parent="." instance=ExtResource("1_b1mul")]
+visible = false
+layout_mode = 1
+
+[node name="TextureButton" type="TextureButton" parent="PauseMenuInstructions"]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 10.0
+offset_right = 510.0
+offset_bottom = 50.0
+texture_normal = ExtResource("3_yroab")
+flip_h = true
+
+[node name="InstructionsItems" parent="." instance=ExtResource("4_3yx38")]
+visible = false
+layout_mode = 1
+
+[node name="Back" type="TextureButton" parent="InstructionsItems"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 35.0
+offset_bottom = 32.0
+texture_normal = ExtResource("3_yroab")
+
+[connection signal="pressed" from="InstructionsContext/ContextFrwd" to="." method="_on_context_frwd_pressed"]
+[connection signal="pressed" from="PauseMenuInstructions/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="InstructionsItems/Back" to="." method="_on_back_pressed"]

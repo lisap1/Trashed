@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dsnc3357q2ww2"]
+[gd_scene load_steps=60 format=3 uid="uid://dsnc3357q2ww2"]
 
 [ext_resource type="Script" path="res://Scenes/pause_menu_instructions.gd" id="1_k7k5y"]
 [ext_resource type="FontFile" uid="uid://chk5gg5vi6bxa" path="res://PixelifySans-VariableFont_wght.ttf" id="1_sa1eu"]
@@ -12,7 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://degp3jy7p05mk" path="res://Final Assets/Keys/ARROWLEFT.png" id="9_pamjs"]
 [ext_resource type="Texture2D" uid="uid://fdagkef8bcb3" path="res://Final Assets/Keys/SPACE.png" id="10_16i0g"]
 [ext_resource type="Texture2D" uid="uid://cuvw52j5pacle" path="res://Final Assets/Keys/SHIFT.png" id="11_rirf4"]
-[ext_resource type="Texture2D" uid="uid://cv5cq27ur603m" path="res://Final Assets/pause_button.png" id="13_pfa36"]
+[ext_resource type="Texture2D" uid="uid://bpgtbk03nq30g" path="res://Final Assets/back_arrow.png" id="13_wm64h"]
+[ext_resource type="Texture2D" uid="uid://dpgjf7udnvqlv" path="res://Final Assets/red_bin.png" id="14_i1bfk"]
+[ext_resource type="Texture2D" uid="uid://cqvfp8tquomv8" path="res://Final Assets/green_bin.png" id="15_eqypo"]
+[ext_resource type="Texture2D" uid="uid://nd4vxaiih2fv" path="res://Final Assets/blue_bin.png" id="16_4swgv"]
+[ext_resource type="Texture2D" uid="uid://b402w4wm5wnm6" path="res://Final Assets/conveyor_spritesheet.png" id="17_xohd5"]
+[ext_resource type="Texture2D" uid="uid://b8dc6lha0uo6b" path="res://Final Assets/items/apple_item.png" id="18_difoc"]
+[ext_resource type="Texture2D" uid="uid://dirhyfktbnerx" path="res://character animation spritesheets/front_running.png" id="19_80abq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qsybx"]
 atlas = ExtResource("2_4wo5w")
@@ -320,87 +326,114 @@ offset_right = 501.0
 offset_bottom = 286.0
 color = Color(0.117647, 0.12549, 0.501961, 1)
 
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 239.0
+offset_right = 243.0
+offset_bottom = 286.0
+color = Color(0.0703488, 0.0758419, 0.349798, 1)
+
+[node name="Label8" type="Label" parent="."]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 168.0
+offset_right = 441.0
+offset_bottom = 210.0
+theme_override_fonts/font = ExtResource("1_sa1eu")
+theme_override_font_sizes/font_size = 9
+text = "The item will move on top of the 
+character."
+
+[node name="Label9" type="Label" parent="."]
+layout_mode = 0
+offset_left = 253.0
+offset_top = 138.0
+offset_right = 487.0
+offset_bottom = 180.0
+theme_override_fonts/font = ExtResource("1_sa1eu")
+theme_override_font_sizes/font_size = 9
+text = "Interact with the items on the conveyor
+when you're close to it. "
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 59.0
-offset_top = 31.0
+offset_left = 3.0
+offset_top = 44.0
 offset_right = 236.0
-offset_bottom = 56.0
+offset_bottom = 69.0
 theme_override_fonts/font = ExtResource("1_sa1eu")
 theme_override_font_sizes/font_size = 11
-text = "Use arrow keys or wasd to move "
+text = "Use arrow keys or wasd to move the player"
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 59.0
-offset_top = 203.0
-offset_right = 384.0
-offset_bottom = 234.0
+offset_left = 27.0
+offset_top = 191.0
+offset_right = 243.0
+offset_bottom = 222.0
 theme_override_fonts/font = ExtResource("1_sa1eu")
 theme_override_font_sizes/font_size = 10
-text = "In practice mode, hold down shift while holding an item to get a hint"
+text = "In practice mode, hold down shift while
+             holding an item to get a hint"
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 0
-offset_left = 59.0
-offset_top = 116.0
-offset_right = 441.0
-offset_bottom = 186.0
+offset_left = 12.0
+offset_top = 130.0
+offset_right = 231.0
+offset_bottom = 159.0
 theme_override_fonts/font = ExtResource("1_sa1eu")
 theme_override_font_sizes/font_size = 10
 text = "Press space to interact with items and bins. 
-
-
-Once you've picked  up an item, interact with the bin you 
-think the item goes in. "
+ "
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="W" type="AnimatedSprite2D" parent="."]
-position = Vector2(86.5, 71.5)
+position = Vector2(65, 82.5)
 sprite_frames = SubResource("SpriteFrames_x7wp0")
 
 [node name="A" type="AnimatedSprite2D" parent="."]
-position = Vector2(73.5, 90.5)
+position = Vector2(51.5, 102)
 sprite_frames = SubResource("SpriteFrames_f7sis")
 frame = 2
 frame_progress = 1.0
 
 [node name="S" type="AnimatedSprite2D" parent="."]
-position = Vector2(93.5, 90.5)
+position = Vector2(72, 101.5)
 sprite_frames = SubResource("SpriteFrames_akt2b")
 
 [node name="D" type="AnimatedSprite2D" parent="."]
-position = Vector2(112.5, 90.5)
+position = Vector2(91, 101.5)
 sprite_frames = SubResource("SpriteFrames_cmwj7")
 frame = 2
 frame_progress = 1.0
 
 [node name="ArrowDown" type="AnimatedSprite2D" parent="."]
-position = Vector2(187.5, 90.5)
+position = Vector2(166, 103)
 sprite_frames = SubResource("SpriteFrames_ajs4r")
 
 [node name="ArrowUp" type="AnimatedSprite2D" parent="."]
-position = Vector2(187.5, 68.5)
+position = Vector2(165.5, 80.5)
 sprite_frames = SubResource("SpriteFrames_qb2i2")
 
 [node name="ArrowRight" type="AnimatedSprite2D" parent="."]
-position = Vector2(209.5, 90.5)
+position = Vector2(187.5, 102.5)
 sprite_frames = SubResource("SpriteFrames_qso2c")
 
 [node name="ArrowLeft" type="AnimatedSprite2D" parent="."]
-position = Vector2(166.5, 90.5)
+position = Vector2(144.5, 102.5)
 sprite_frames = SubResource("SpriteFrames_jp5ta")
 
 [node name="Space" type="AnimatedSprite2D" parent="."]
-position = Vector2(161, 147)
+position = Vector2(116, 166)
 scale = Vector2(0.785714, 0.785714)
 sprite_frames = SubResource("SpriteFrames_8u3x4")
 frame = 2
 frame_progress = 1.0
 
 [node name="Shift" type="AnimatedSprite2D" parent="."]
-position = Vector2(158, 241)
+position = Vector2(118, 244)
 sprite_frames = SubResource("SpriteFrames_6yrml")
 frame_progress = 1.0
 
@@ -408,8 +441,129 @@ frame_progress = 1.0
 layout_mode = 0
 offset_left = 11.0
 offset_top = 13.0
-offset_right = 51.0
-offset_bottom = 53.0
-texture_normal = ExtResource("13_pfa36")
+offset_right = 32.0
+offset_bottom = 34.0
+texture_normal = ExtResource("13_wm64h")
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 343.0
+offset_top = 83.0
+offset_right = 409.0
+offset_bottom = 133.0
+color = Color(0.117647, 1, 0.501961, 0.501961)
+
+[node name="RedBin" type="Sprite2D" parent="."]
+position = Vector2(297, 86)
+texture = ExtResource("14_i1bfk")
+
+[node name="GreenBin" type="Sprite2D" parent="."]
+position = Vector2(455, 90)
+texture = ExtResource("15_eqypo")
+
+[node name="BlueBin" type="Sprite2D" parent="."]
+position = Vector2(376, 80)
+texture = ExtResource("16_4swgv")
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 25.0
+offset_right = 420.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("1_sa1eu")
+theme_override_font_sizes/font_size = 11
+text = "recycling"
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 41.0
+offset_right = 344.0
+offset_bottom = 66.0
+theme_override_fonts/font = ExtResource("1_sa1eu")
+theme_override_font_sizes/font_size = 11
+text = "general waste"
+
+[node name="Label6" type="Label" parent="Label6"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = -37.0
+offset_right = 165.0
+offset_bottom = -12.0
+theme_override_fonts/font = ExtResource("1_sa1eu")
+theme_override_font_sizes/font_size = 15
+text = "Gameplay"
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 49.0
+offset_right = 499.0
+offset_bottom = 74.0
+theme_override_fonts/font = ExtResource("1_sa1eu")
+theme_override_font_sizes/font_size = 11
+text = "food scraps 
+"
+
+[node name="ConveyorSpritesheet" type="Sprite2D" parent="."]
+position = Vector2(470, 240.5)
+texture = ExtResource("17_xohd5")
+flip_h = true
+hframes = 14
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 203.5
+offset_right = 476.0
+offset_bottom = 245.5
+color = Color(0.117647, 1, 0.501961, 0.403922)
+
+[node name="AppleItem" type="Sprite2D" parent="."]
+position = Vector2(449, 223.5)
+scale = Vector2(1.17857, 1.17857)
+texture = ExtResource("18_difoc")
+
+[node name="FrontRunning" type="Sprite2D" parent="."]
+position = Vector2(439, 186.5)
+scale = Vector2(1.90625, 1.90625)
+texture = ExtResource("19_80abq")
+hframes = 4
+
+[node name="Label7" type="Label" parent="."]
+layout_mode = 0
+offset_left = 253.0
+offset_top = 194.0
+offset_right = 610.0
+offset_bottom = 251.0
+theme_override_fonts/font = ExtResource("1_sa1eu")
+theme_override_font_sizes/font_size = 9
+text = "Then move to the area of the bin 
+you would sort this item in 
+and interact with it. "
+
+[node name="Label10" type="Label" parent="."]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 2.0
+offset_right = 173.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("1_sa1eu")
+theme_override_font_sizes/font_size = 15
+text = "Inputs
+"
+
+[node name="Label11" type="Label" parent="."]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 239.0
+offset_right = 528.0
+offset_bottom = 281.0
+theme_override_fonts/font = ExtResource("1_sa1eu")
+theme_override_font_sizes/font_size = 9
+text = "Correctly sort 75 items 
+without making 3 mistakes 
+to make Tamaki Makaurau trash-free!"
 
 [connection signal="pressed" from="BackBtn" to="." method="_on_back_btn_pressed"]

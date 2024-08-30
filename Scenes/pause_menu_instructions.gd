@@ -12,6 +12,7 @@ extends Control
 @onready var shift = get_node("Shift")
 
 
+# button animations
 func _process(_delta):
 	if Input.is_action_just_pressed("down"):
 		s.play()
@@ -30,6 +31,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("shift"):
 		shift.play()
 
-# error here
+
+# on back button pressed, hide instructions
 func _on_back_btn_pressed():
-	print("button pressed")
+	visible = false
